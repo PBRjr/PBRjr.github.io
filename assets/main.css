@@ -102,7 +102,7 @@ body {
 
 blockquote {
   border-left: 5px solid var(--quote-text);
-  margin-left: 10px;
+  margin-left: 0;
   background-color: var(--link-hover);
   padding: 5px;
 }
