@@ -8,7 +8,7 @@
   --link-hover: rgba(0, 0, 0, 0.3);
   --red: rgb(196, 48, 48);
   --bold-white: rgb(255, 255, 255);
-  --quote-text: rgb(146, 94, 16);
+  --quote-text: rgb(192, 118, 7);
 }
 
 /* BASIC */
@@ -110,6 +110,7 @@ blockquote {
 blockquote p {
   margin: 5px;
 }
+
 /* NAV BUTTONS */
 
 .button {
