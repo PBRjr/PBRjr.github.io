@@ -111,6 +111,10 @@ blockquote p {
   margin: 5px;
 }
 
+footer {
+  text-align: right;
+}
+
 /* NAV BUTTONS */
 
 .button {
