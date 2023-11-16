@@ -8,6 +8,7 @@
   --link-hover: rgba(0, 0, 0, 0.3);
   --red: rgb(196, 48, 48);
   --bold-white: rgb(255, 255, 255);
+  --quote-text: rgb(146, 94, 16);
 }
 
 /* BASIC */
@@ -99,6 +100,16 @@ body {
   align-items: flex-start;
 }
 
+blockquote {
+  border-left: 5px solid var(--quote-text);
+  margin-left: 10px;
+  background-color: var(--link-hover);
+  padding: 5px;
+}
+
+blockquote p {
+  margin: 5px;
+}
 /* NAV BUTTONS */
 
 .button {
@@ -178,7 +189,6 @@ body {
   height: auto;
   z-index: 2;
   text-align: left;
-  image-rendering: crisp-edges;
 }
 
 .article-content > h1, h2 {
