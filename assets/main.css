@@ -104,8 +104,8 @@ body.hide-content .heading {
   justify-content: center;
   align-items: flex-start;
   transition: 
-    margin-top 0.325s .12s,
-    opacity 0.325s 0.25s;
+    margin-top 0.75s .12s,
+    opacity 0.5s;
 }
 
 body.loaded {
@@ -118,9 +118,6 @@ body.loaded .navmenu {
 }
 
 body.hide-content .navmenu {
-  transition:
-    margin-top 0.75s .12s,
-    opacity 0.5s;
   margin-top: 100%;
   opacity: 0;
 }
