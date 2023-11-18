@@ -5,15 +5,47 @@ document.addEventListener("DOMContentLoaded", function() {
   let pageHeading = document.getElementById("page-heading");
   let pageNavMenu = document.getElementById("page-nav-menu");
 
-  
+  window.onload = function() {
+    document.body.classList.add("loaded");
+  }
+
   function showArticle(articleId) {
     // Hides main page and reveals article
     // Hide all main content
-    pageHeading.style.display = 'none';
-    pageNavMenu.style.display = 'none';
+    document.body.classList.add("hide-content");
 
-    // Show the specified article
-    document.getElementById(articleId).style.display = 'flex';
+    // Delay pop-up for fade-out
+    setTimeout(() => {
+      // Hide main content
+      pageHeading.style.display = 'none';
+      pageNavMenu.style.display = 'none';
+
+      // Show the specified article
+      document.getElementById(articleId).style.display = 'flex';
+      
+      setTimeout(() => {
+        document.body.classList.add("show-content");
+      }, 100);
+    }, 500);
+  }
+
+  function closeArticle() {
+      // Closes article and re-displays main page
+      document.body.classList.remove("show-content");
+      
+      setTimeout(() => {
+      // Display main page
+      pageHeading.style.display = 'block';
+      pageNavMenu.style.display = 'flex';
+
+      // Restore main page opacity
+      articles.forEach(article => article.style.display = "none");
+
+      setTimeout(() => {
+      document.body.classList.remove("hide-content");  
+      }, 100);
+      }, 500);
+      
   }
 
   function toggleVisibility(contentId, arrow) {
@@ -31,13 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
   
-  function closeArticle() {
-    // Closes article and re-displays main page
-    articles.forEach(article => article.style.display = 'none');
-    pageHeading.style.display = 'block';
-    pageNavMenu.style.display = 'flex';
-  }
-
+ 
   
   document.getElementById("page-nav-menu").addEventListener('click', function(event) {
     // Event listener for clicks on article links
