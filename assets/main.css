@@ -47,6 +47,8 @@ body {
   text-align: center;
   font-family: "Cinzel", serif; 
   background: no-repeat  top/cover url("/images/sword.png");
+  background-attachment: fixed;
+  /*background:  radial-gradient(circle, rgb(94, 60, 10), rgb(209, 172, 6), rgb(88, 88, 88));*/
   overflow: hidden;
 }
 
@@ -79,8 +81,10 @@ body {
 .heading {
   padding: 5%;
   text-align: center;
+  opacity: 0;
   margin: 0;
-  transition: opacity 0.90s
+  transition:
+    opacity 2s;
 }
 
 .heading h1 {
@@ -91,30 +95,37 @@ body {
   text-shadow: 4px 4px 2px var(--link);
 }
 
+body.loaded .heading {
+  opacity: 1;
+}
+
 body.hide-content .heading {
+  transition: opacity 1s;
   opacity: 0;
 }
 
 .navmenu {
   margin: 0;
   margin-top: 100%;
+  opacity: 0;
   width: 100%;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: flex-start;
   transition: 
-    margin-top 0.75s .12s,
-    opacity 0.5s;
+    margin-top 0.75s,
+    opacity 1.5s;
 }
 
 body.loaded {
-  overflow: auto;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
 body.loaded .navmenu {
   margin-top: 0;
+  opacity: 1;
 }
 
 body.hide-content .navmenu {
@@ -215,6 +226,11 @@ body.show-content .article-popup {
 .drop-arrow {
   display: inline-block;
   transform: rotate(0deg);
+  transition: transform .5s;
+}
+
+.drop-arrow-on {
+  transform: rotate(90deg);
 }
 
 .drop-down {

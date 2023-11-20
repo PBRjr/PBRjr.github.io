@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
       setTimeout(() => {
         document.body.classList.add("show-content");
       }, 100);
-    }, 500);
+    }, 225);
   }
 
   function closeArticle() {
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
       setTimeout(() => {
       document.body.classList.remove("hide-content");  
       }, 100);
-      }, 500);
+      }, 250);
       
   }
 
@@ -55,11 +55,11 @@ document.addEventListener("DOMContentLoaded", function() {
     if (isVisible.classList.contains('hidden-drop-down')) {
       isVisible.classList.remove('hidden-drop-down');
       isVisible.classList.add('visible-drop-down');
-      arrow.style.transform = 'rotate(90deg)';
+      arrow.classList.add('drop-arrow-on');
     } else {
       isVisible.classList.remove('visible-drop-down');
       isVisible.classList.add('hidden-drop-down');
-      arrow.style.transform = 'rotate(0deg)';
+      arrow.classList.remove('drop-arrow-on');
     }
   }
   
