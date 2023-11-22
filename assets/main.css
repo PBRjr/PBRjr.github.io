@@ -47,7 +47,7 @@ body {
   font-size: 150%;
   text-align: center;
   font-family: "Cinzel", serif; 
-  background: no-repeat  top/cover url("/images/sword.png");
+  background: no-repeat  center/cover url("/images/sword.png");
   background-attachment: fixed;
   /*background:  radial-gradient(circle, rgb(94, 60, 10), rgb(209, 172, 6), rgb(88, 88, 88));*/
   overflow: hidden;
@@ -264,6 +264,23 @@ body.show-content .article-popup {
   color: var(--red);
 }
 
+.article-images {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 100px;
+  box-shadow: 8px 8px 2px var(--link);
+}
+
+@media only screen and (min-width: 800px) {
+  .article-images {
+    margin: 20px;
+    float: right;
+    clear: both;
+  }
+}
+
 /* MEDIA QUERIES */
 
 @media only screen and (min-width: 600px) {
@@ -290,7 +307,6 @@ body.show-content .article-popup {
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-
   }
 
   .button {
