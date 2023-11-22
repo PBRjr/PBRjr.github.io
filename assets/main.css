@@ -264,7 +264,7 @@ body.show-content .article-popup {
   color: var(--red);
 }
 
-.article-images {
+article img {
   display: block;
   max-width: 100%;
   height: auto;
