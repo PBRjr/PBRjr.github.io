@@ -1,0 +1,40 @@
+body {
+  font-size: 150%;
+  text-align: center;
+  font-family: "Cinzel", serif;
+}
+
+h1, h2, h3, h4, h5, h6, li, a, p, blockquote, q, i {
+  text-decoration: none;
+  color: inherit;
+  font-family: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Fauna One", serif; 
+  text-transform: uppercase;
+}
+
+b, em, strong {
+color: $bold-white;
+}
+
+blockquote {
+  border-left: 8px solid $orange;
+  margin-left: 0;
+  background-color: $link-hover;
+  padding: 5px;
+}
+
+  blockquote::before, blockquote::after {
+    content: '';
+    content: none;
+  }
+
+  blockquote p {
+  margin: 5px;
+  }
+
+  blockquote footer {
+  text-align: right;
+  }
