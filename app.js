@@ -123,6 +123,10 @@ window.addEventListener('click', (event) => {
     }
 });
 
+// Close modal when clicking the close button
+const closeButton = document.querySelector('.close');
+closeButton.addEventListener('click', closeModal);
+
 // Event listener for navigation menu items
 const navMenuItems = document.querySelectorAll('.nav-links a');
 navMenuItems.forEach((link) => {
