@@ -31,15 +31,6 @@ const showSection = (sectionId) => {
   selectedSection.classList.add('active');
 };
 
-// Event listener for navigation menu items
-const navMenuItems = document.querySelectorAll('.nav-links a');
-navMenuItems.forEach((link) => {
-  link.addEventListener('click', (event) => {
-      event.preventDefault();
-      const sectionId = link.getAttribute('href').substring(1);
-      showSection(sectionId);
-  });
-});
 
 // Render grid items
 const renderGridItems = (section, data) => {
@@ -74,18 +65,39 @@ const renderHeadlines = (data) => {
 
 // Render timeline items
 const renderTimelineItems = (data) => {
-    const timelineContainer = document.querySelector('.timeline-container');
-    data.forEach((event) => {
-        const timelineItem = document.createElement('div');
-        timelineItem.classList.add('timeline-item');
-        timelineItem.innerHTML = `
-            <img src="${event.image}" alt="${event.title}">
-            <h3>${event.title}</h3>
-            <p>${event.description}</p>
-        `;
-        timelineContainer.appendChild(timelineItem);
-    });
+  const timelineItems = document.querySelector('.timeline-items');
+  data.forEach((event, index) => {
+      const timelineItem = document.createElement('div');
+      timelineItem.classList.add('timeline-item');
+      timelineItem.classList.add(index % 2 === 0 ? 'even' : 'odd');
+      timelineItem.innerHTML = `
+          <img src="${event.image}" alt="${event.title}">
+          <h3>${event.title}</h3>
+      `;
+      timelineItem.querySelector('img').addEventListener('click', () => {
+          openModal(event.description);
+      });
+      timelineItem.querySelector('h3').addEventListener('click', () => {
+          openModal(event.description);
+      });
+      timelineItems.appendChild(timelineItem);
+  });
 };
+
+// Animate timeline items on scroll
+const animateTimelineItems = () => {
+  const loreSection = document.getElementById('lore');
+  if (!loreSection.classList.contains('active')) return; // Check if Lore section is active
+
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  timelineItems.forEach((item) => {
+      const itemPosition = item.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+      if (itemPosition < windowHeight * 0.3) {
+          item.classList.add('show');
+      }
+  });
+}
 
 // Open modal
 const openModal = (content) => {
@@ -111,17 +123,15 @@ window.addEventListener('click', (event) => {
     }
 });
 
-// Animate timeline items on scroll
-const animateTimelineItems = () => {
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    timelineItems.forEach((item) => {
-        const itemPosition = item.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        if (itemPosition < windowHeight) {
-            item.classList.add('show');
-        }
-    });
-};
+// Event listener for navigation menu items
+const navMenuItems = document.querySelectorAll('.nav-links a');
+navMenuItems.forEach((link) => {
+  link.addEventListener('click', (event) => {
+      event.preventDefault();
+      const sectionId = link.getAttribute('href').substring(1);
+      showSection(sectionId);
+  });
+});
 
 // Load and render data
 const loadAndRenderData = async () => {
@@ -139,5 +149,8 @@ const loadAndRenderData = async () => {
 };
 
 // Event listeners
-document.addEventListener('DOMContentLoaded', loadAndRenderData);
+document.addEventListener('DOMContentLoaded', () => {
+  loadAndRenderData();
+});
+
 window.addEventListener('scroll', animateTimelineItems);

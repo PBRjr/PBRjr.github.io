@@ -1,0 +1,66 @@
+@use 'variables';
+/*
+---
+Timeline
+---
+*/
+
+.timeline-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background-color: variables.$type-color;
+  transform: translateX(-50%);
+}
+
+.timeline-items {
+  position: relative;
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+  transform: translateX(-300px);
+  text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+  transform: translateX(300px);
+  text-align: left;
+}
+
+.timeline-item.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timeline-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.timeline-item h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}

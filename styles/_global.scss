@@ -1,0 +1,28 @@
+@use 'variables';
+
+// Body, Nav, Type
+body {
+  background-color: variables.$background-soft;
+  color: variables.$type-color;
+  font-family: variables.$font-stack-main;
+}
+
+h1, h2, h3, h4, h5, h6, a {
+  color: variables.$type-bold;
+  font-family: variables.$font-stack-strong;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  background-color: variables.$background-hard;
+  color: variables.$type-bold;
+  padding: 20px;
+}
+
+//Burger color
+.burger div {
+  background-color: variables.$type-bold;
+}

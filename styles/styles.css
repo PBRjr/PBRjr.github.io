@@ -1,0 +1,335 @@
+body {
+  background-color: #424242;
+  color: #fcf4d9;
+  font-family: "Fauna One", "serif";
+}
+
+h1, h2, h3, h4, h5, h6, a {
+  color: #ffe28a;
+  font-family: "Cinzel", "serif";
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  background-color: #272727;
+  color: #ffe28a;
+  padding: 20px;
+}
+
+.burger div {
+  background-color: #ffe28a;
+}
+
+/*
+---
+Heroes, Characters, Places Grids
+---
+*/
+.grid-container {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.grid-item {
+  background-color: #272727;
+  flex: 0 0 calc(25% - 20px);
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.grid-item:hover {
+  transform: translateY(-5px);
+}
+
+.grid-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.grid-item h3 {
+  margin-top: auto;
+}
+
+/* 
+--- 
+Modal 
+---
+*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.modal-content {
+  background-color: #383838;
+  margin: 15vh auto;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 700px;
+  max-height: 70%;
+  overflow-y: scroll;
+  overscroll-behavior-y: contain;
+  position: relative;
+}
+
+.modal-content text {
+  max-height: 100%;
+  overflow-y: scroll;
+  overscroll-behavior-y: contain;
+}
+
+.modal-text {
+  padding: 20px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #ffe28a;
+  cursor: pointer;
+}
+
+/*
+---
+Timeline
+---
+*/
+.timeline-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background-color: #fcf4d9;
+  transform: translateX(-50%);
+}
+
+.timeline-items {
+  position: relative;
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+  transform: translateX(-300px);
+  text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+  transform: translateX(300px);
+  text-align: left;
+}
+
+.timeline-item.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timeline-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.timeline-item h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+/*
+---
+Global Styles
+---
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body.modal-active {
+  overflow: hidden;
+}
+
+/* 
+---
+Header and navigation
+---
+*/
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.burger {
+  display: none;
+  cursor: pointer;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+/* 
+--- 
+Main Section and Title 
+---
+*/
+main {
+  padding: 40px;
+}
+
+section {
+  margin-bottom: 60px;
+}
+
+section.hidden {
+  display: none;
+}
+
+section.active {
+  display: block;
+}
+
+section.active h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.hero-image {
+  width: 100%;
+  height: 400px;
+  background-color: #ddd;
+  background-image: url("/images/overview-banner.webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.intro-text {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/*
+---
+Sharn Inquisitor
+---
+*/
+.newspaper-container {
+  background-color: #272727;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.headline {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+/* 
+--- 
+Footer 
+---
+*/
+footer {
+  background-color: #272727;
+  color: #fcf4d9;
+  padding: 20px;
+  text-align: center;
+  position: sticky;
+  bottom: 0;
+}
+
+/* 
+--- 
+Media queries
+---
+*/
+@media screen and (max-width: 1024px) {
+  .grid-item {
+    flex: 0 0 calc(50% - 20px);
+  }
+}
+@media screen and (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .grid-item {
+    flex: 0 0 100%;
+  }
+  .burger {
+    display: block;
+  }
+  .nav-active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .nav-active li {
+    margin: 10px 0;
+  }
+}/*# sourceMappingURL=styles.css.map */

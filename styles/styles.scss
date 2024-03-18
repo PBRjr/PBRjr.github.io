@@ -1,0 +1,178 @@
+// Modules
+@use 'variables';
+@use 'global';
+@use 'type';
+@use 'grid';
+@use 'modal';
+@use 'timeline';
+
+/*
+---
+Global Styles
+---
+*/
+
+// Reset default browser styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// Remove scroll bar on open modal
+body.modal-active {
+  overflow: hidden;
+}
+
+/* 
+---
+Header and navigation
+---
+*/
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+// Burger styles
+.burger {
+  display: none;
+  cursor: pointer;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+/* 
+--- 
+Main Section and Title 
+---
+*/
+
+main {
+  padding: 40px;
+}
+
+section {
+  margin-bottom: 60px;
+}
+
+section.hidden {
+  display: none;
+}
+
+section.active{
+  display: block;
+}
+
+section.active h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+// Overview Banner image
+.hero-image {
+  width: 100%;
+  height: 400px;
+  background-color: #ddd;
+  background-image: url('/images/overview-banner.webp');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+// Overview page text
+.intro-text {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/*
+---
+Sharn Inquisitor
+---
+*/
+
+.newspaper-container {
+  background-color: variables.$background-hard;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.headline {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+/* 
+--- 
+Footer 
+---
+*/
+
+footer {
+  background-color: variables.$background-hard;
+  color: variables.$type-color;
+  padding: 20px;
+  text-align: center;
+  position: sticky;
+  bottom: 0;
+}
+
+/* 
+--- 
+Media queries
+---
+*/
+
+@media screen and (max-width: 1024px) {
+  .grid-item {
+    flex: 0 0 calc(50% - 20px);
+  }
+}
+@media screen and (max-width: 768px) {
+  .nav-links {
+      display: none;
+  }
+  .grid-item {
+    flex: 0 0 100%;
+  }
+
+  .burger {
+      display: block;
+  }
+
+  .nav-active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+  }
+
+  .nav-active li {
+      margin: 10px 0;
+  }
+}

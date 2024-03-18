@@ -1,0 +1,42 @@
+@use 'variables';
+
+/*
+---
+Heroes, Characters, Places Grids
+---
+*/
+
+.grid-container {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.grid-item {
+  background-color: variables.$background-hard;
+  flex: 0 0 calc(25% - 20px);
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.grid-item:hover {
+  transform: translateY(-5px);
+}
+
+.grid-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.grid-item h3 {
+  margin-top: auto;
+}
