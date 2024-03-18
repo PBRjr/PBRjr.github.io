@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Event 1",
+    "description": "Description of Event 1...",
+    "image": "/images/jonston-marsh.png"
+  },
+  {
+    "title": "Event 2",
+    "description": "Description of Event 2...",
+    "image": "path/to/event2.jpg"
+  }
+]
