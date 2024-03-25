@@ -31,7 +31,11 @@ Timeline
   width: 50%;
   padding: 20px;
   opacity: 0;
-  transition: opacity 0.75s ease, transform 0.75s ease;
+  transition: opacity 0.75s ease, transform 0.75s ease, translate 0.3s ease;
+}
+
+.timeline-item:hover {
+  translate: 0px -5px;
 }
 
 .timeline-item:nth-child(odd) {

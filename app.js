@@ -3,8 +3,17 @@ const burger = document.querySelector('.burger');
 const navLinks= document.querySelector('.nav-links');
 
 burger.addEventListener('click', () => {
-    navLinks.classList.toggle('nav-active');
-    burger.classList.toggle('toggle');
+  if (navLinks.classList.contains('nav-active')) {
+    navLinks.classList.add('nav-inactive');
+    setTimeout(() => {
+      navLinks.classList.remove('nav-active');
+      navLinks.style.display = 'none';
+    }, 500); // Delay should match the animation duration
+  } else {
+    navLinks.style.display = 'flex';
+      navLinks.classList.add('nav-active');
+      navLinks.classList.remove('nav-inactive')
+  }
 });
 
 // Load data from JSON files
@@ -93,7 +102,7 @@ const animateTimelineItems = () => {
   timelineItems.forEach((item) => {
       const itemPosition = item.getBoundingClientRect().top;
       const windowHeight = window.innerHeight;
-      if (itemPosition < windowHeight * 0.3) {
+      if (itemPosition < windowHeight * 0.4) {
           item.classList.add('show');
       }
   });

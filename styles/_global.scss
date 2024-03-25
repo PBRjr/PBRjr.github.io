@@ -12,6 +12,11 @@ h1, h2, h3, h4, h5, h6, a {
   font-family: variables.$font-stack-strong;
 }
 
+b, strong {
+  color: variables.$type-bold;
+  font-family: variables.$font-stack-main;
+}
+
 a {
   text-decoration: none;
 }
