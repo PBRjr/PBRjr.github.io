@@ -20,7 +20,7 @@ Heroes, Characters, Places Grids
   flex-flow: column nowrap;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   text-align: center;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -32,7 +32,8 @@ Heroes, Characters, Places Grids
 
 .grid-item img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   border-radius: 5px;
   margin-bottom: 10px;
 }
