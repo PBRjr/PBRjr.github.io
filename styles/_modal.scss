@@ -30,6 +30,7 @@ Modal
   overflow-y: scroll;
   overscroll-behavior-y: contain;
   position: relative;
+  box-shadow: 5px 5px 10px variables.$shadow-color;
 }
 
 // Modal Content text

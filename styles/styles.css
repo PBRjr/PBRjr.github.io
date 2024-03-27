@@ -47,7 +47,7 @@ Heroes, Characters, Places Grids
   flex-flow: column nowrap;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 5px rgba(29, 29, 29, 0.8431372549);
   text-align: center;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -97,6 +97,7 @@ Modal
   overflow-y: scroll;
   overscroll-behavior-y: contain;
   position: relative;
+  box-shadow: 5px 5px 10px rgba(29, 29, 29, 0.8431372549);
 }
 
 .modal-content text {
@@ -226,6 +227,7 @@ nav {
 .nav-links {
   list-style: none;
   display: flex;
+  font-size: 1.5rem;
 }
 .nav-links li {
   padding-left: 40px;
@@ -277,6 +279,7 @@ section.active h2 {
 .hero-image {
   width: 100%;
   height: 400px;
+  box-shadow: 5px 5px 10px rgba(29, 29, 29, 0.8431372549);
   background-color: #ddd;
   background-image: url("/images/overview-banner.webp");
   background-position: center;
@@ -285,14 +288,22 @@ section.active h2 {
 }
 
 .intro-text {
-  min-width: 300px;
-  padding: 0 16.6666666667vw;
+  width: 100%;
   text-align: left;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
   transition: 0.25s all ease;
 }
 .intro-text h1 {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-bottom: solid 3px rgba(29, 29, 29, 0.8431372549);
+  border-radius: 3px;
+}
+.intro-text p {
+  max-width: 50rem;
 }
 
 /*
@@ -309,7 +320,10 @@ Sharn Inquisitor
 
 .headline {
   font-size: 1.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
+  padding-left: 3px;
+  border-left: solid 3px #ffe28a;
+  border-radius: 3px;
   cursor: pointer;
   transition: translate 0.3s ease;
 }
@@ -369,6 +383,7 @@ Media queries
     width: 100%;
     background-color: #383838;
     color: #fcf4d9;
+    z-index: 99;
     position: absolute;
     top: calc(100% + 20px);
     animation: slide-in 0.5s forwards;
