@@ -25,6 +25,7 @@ header {
   background-color: variables.$background-hard;
   color: variables.$type-bold;
   padding: 20px;
+  box-shadow: 0 3px 8px variables.$shadow-color;
 }
 
 //Burger color

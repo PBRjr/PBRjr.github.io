@@ -173,7 +173,7 @@ Footer
 footer {
   background-color: variables.$background-hard;
   color: variables.$type-color;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   position: sticky;
   bottom: 0;
@@ -185,14 +185,8 @@ Media queries
 ---
 */
 
-@media screen and (max-width: 1280px) {
-  .intro-text {
-    padding: 0 calc(100vw / 8);
-    min-width: 300px;
-  }
-}
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: calc(1320rem/16)) {
   .intro-text {
     padding: 0 5%;
     min-width: 300px;
@@ -227,6 +221,7 @@ Media queries
       
       background-color: variables.$background-medium;
       color: variables.$type-color;
+      box-shadow: 8px 8px 12px variables.$shadow-color;
       z-index: 99;
 
       position: absolute;
@@ -245,7 +240,7 @@ Media queries
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: calc(768rem/16)) {
   // Overview text takes up more of the screen
   .intro-text {
     padding: 0;
