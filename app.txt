@@ -107,20 +107,11 @@ const animateTimelineItems = () => {
   timelineItems.forEach((item) => {
       const itemPosition = item.getBoundingClientRect().top;
       const windowHeight = window.innerHeight;
-      
-      if (window.matchMedia("(max-width: 768px)").matches) {
-        // Adjusted value for mobile screens
-        if (itemPosition < windowHeight * 0.60) { 
+      if (itemPosition < windowHeight * 0.4) {
           item.classList.add('show');
-        }
-      } else {
-        // Original value for larger screens
-        if (itemPosition < windowHeight * 0.4) {
-          item.classList.add('show');
-        }
       }
-    });
-  }
+  });
+}
 
 // Open modal
 const openModal = (content) => {
