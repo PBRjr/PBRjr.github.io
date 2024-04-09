@@ -68,3 +68,9 @@ Timeline
   margin-bottom: 10px;
   cursor: pointer;
 }
+
+@media screen and (max-width: calc(768rem/16)) {
+  .timeline-item img {
+    display: none; 
+  }
+}

@@ -38,6 +38,11 @@ const showSection = (sectionId) => {
   const selectedSection = document.getElementById(sectionId);
   selectedSection.classList.remove('hidden');
   selectedSection.classList.add('active');
+  navLinks.classList.add('nav-inactive');
+  setTimeout(() => {
+    navLinks.classList.remove('nav-active');
+    navLinks.style.display = 'none';
+  }, 500);
 };
 
 

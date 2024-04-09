@@ -1,22 +1,87 @@
 [
   {
-    "title": "Event 1",
-    "description": "Description of Event 1...",
-    "image": "/images/jonston-marsh.png"
+    "title": "The Progenitor Dragons and The Creation of The World",
+    "description": "<blockquote>\"And the great progenitors discovered the prophecy, and all the world lay out before them, but the brothers Siberys and Khyber disagreed on the prophecy and did battle against one another. Khyber would be victorious, but Khyber did not expect their sister, Eberron, to leap upon him, and deal him a mortal blow.\"</blockquote><center>The Dragons' account of the Progenitors</center><p>In the mythic past, the world was one and the <b>progenitor wyrms</b>, the first and greatest of dragonkind, ruled all. The three most powerful—<b>Siberys, Eberron, and Khyber</b>—discovered (or possibly created) the <b>Prophecy</b>-that which foretold all that would happen in the ages to come. A world-shattering struggle followed between the three, splitting the world into three parts and scattering the Prophecy across the width and breadth of existence. In the end, Siberys became the <b>glowing ring</b> that surrounds the world, Khyber was bound in the <b>darkest depths</b>, and Eberron healed the <b>world between</b> by becoming one with it. Siberys called forth the next generation of dragons, Eberron created all manner of other living things, and Khyber spat out the fiends.</p>",
+    "image": "/images/pro-dragons.webp"
   },
   {
-    "title": "Event 2",
-    "description": "Description of Event 2...",
-    "image": "/images/goliath.png"
+    "title": "The Age of Demons",
+    "description": "<blockquote>\"The sun was blotted out of the sky, the land was corrupted, and darkness ruled over all.\"</blockquote><center>Draconic Histories: The Age of Demons</center><p>Khyber's <b>fiendish offspring</b> overrun the surface world, creating a hellish environment where rakshasas and night hags rule supreme.</p>",
+    "image": "/images/age_of_demons.webp"
   },
   {
-    "title": "Event 1",
-    "description": "Description of Event 1...",
-    "image": "/images/jonston-marsh.png"
+    "title": "The Dragon-Fiend War Begins",
+    "description": "<blockquote>\"The darkness was complete. Until a couatl scholar, Hezcalipa, and a blue dragon warrior, Ourelonastrix, rediscovered the prophecy of their progenitors. This gave them insight into the weaknesses of the overlords and their minions, and allowed them to rally the dragons to war.\"</blockquote><center>Draconic Histories: The Age of Demons</center><p>Dragons rediscover the <b>Prophecy</b> and rise from their primitive state to oppose their demonic <b>overlords</b>, allying with other draconic species, including the <b>couatls</b>. The common races, still in primitive states, hide from the godlike combatants and find a way to <b>survive</b>.</p>",
+    "image": "/images/fiend_dragon_war.webp"
   },
   {
-    "title": "Event 2",
-    "description": "Description of Event 2...",
-    "image": "/images/goliath.png"
+    "title": "The Great Sacrifice and the War's End",
+    "description": "<blockquote>\"The war was against an enemy that could not be undone, even by our strength. However, through his insights into the prophecy Hezcalipa saw what must be done, and the cost of it all. In order to defeat the demons and bind them for all time, the sacrifice required would be great, and only he and his people could bear it.\"</blockquote><center>Draconic Histories: The Age of Demons</center><p><b>Couatls</b> sacrifice most of their number to create the Silver Flame, sending the most powerful of the <b>demon lords</b> and the majority of the fiends back to <b>Khyber</b>, where they are trapped for eternity. The dragons retreat to <b>Argonnessen</b> to contemplate the <b>Prophecy</b>, ignoring the \"lesser races.\"",
+    "image": "/images/wars_end.webp"
+  },
+  {
+    "title": "The Rise of the Giants",
+    "description": "<blockquote>\"After the cataclysm of the Age of the Demons, it appears as though the giants began to rise in prominence and began to develop their island of Xen'drik. It is at this time the enslavement of Elves also begins to appear in the ruins.\"</blockquote><center>Morgrave Study of Xen'drik and The Giants</center><p>The <b>giants</b> rise from the ruins of the <b>Dragon-Fiend War</b> to establish a vast and powerful civilization on the continent of <b>Xen'drik</b>. They enslave elves and drow, which has the inadvertent effect of pulling the first of the common races out of their <b>primitive state</b>.</p>",
+    "image": "/images/rise_of_the_giants.webp"
+  },
+  {
+    "title": "The Dal Quor Severance and the Fall of Giant Civilization",
+    "description": "<blockquote>\"There are signs of a cataclysm occurring during the prime of the Giant's civilization, details are unclear, but in the wake of this it is obvious that the Giant's were never the same again.\"</blockquote><center>Morgrave University Expedition Notes from Xen'drik</center><p>The <b>quori</b> invade Xen'drik through a gate that connects Eberron to <b>Dal Quor, the Plane of Dreams</b>. After years of battle, the giants call upon the <b>magic of the dragons</b> to destroy the planar gate. This act results in a <b>cataclysm</b> that shakes Xen'drik to its core and plunges large chunks of the continent beneath the sea. The physical connection to Dal Quor is severed, perhaps forever.</p><p>The remaining giant kingdoms never quite recover from the events of the quori invasion. Horrible curses and plagues sweep through the land, and the <b>elves</b> use the opportunity to <b>rebel</b>. In desperation, the giants again turn to the same magic they used to stop the quori. Before they can unleash such destruction a second time, the <b>dragons attack</b>. <b>Giant civilization crumbles</b>, the drow go into hiding in the Xen'drik countryside, and the elves flee to the island-continent of Aerenal. The Drow are largely left behind.</p>",
+    "image": "/images/fall_of_giants.webp"
+  },
+  {
+    "title": "The Rise and Fall of Empires",
+    "description": "<blockquote>\"While the Giants fell from power in Xen'drik, there were new forces now rising. Aeren, the great elven prophet, led the elves, with help from the early Phiarlans, to Aerenal where they settled the island in city states. Meanwhile in Khorvaire we see the rise of The Dhakaani goblins\"</blockquote><center>\"History of The Peoples of Khorvaire\" by Professor Saan of Morgrave University</center><p>The giants revert to primitive monsters living in the ruins of their <b>shattered civilization</b> as the dragons return to their secluded continent and the elves settle Aerenal. Meanwhile, on Khorvaire, the first of the goblinoid kingdoms rises in the area that will one day become Breland and Darguun.",
+    "image": "/images/rise_and_fall_empires.webp"
+  },
+  {
+    "title": "The Dealkyr War",
+    "description": "<blockquote>\"The onslaught by this completely alien invader is difficult to imagine. Their effect spreading like a disease across the land itself. Corrupting and changing plants, animals, and those unfortunate enough to be caught by these creatures were changed and mutated into sick perversions of their original form. The Dealkyr must have left complete and horrible destruction in their path, in a way that cannot truly be ever known again, if we are at all fortunate.\"</blockquote><center>\"The Dealkyr War\" by Professor Talaen Toloai of Morgrave University</center><p>The <b>Dealkyr</b> - a race of immensely powerful beings from <b>Xoriat, the Plane of Madness</b> - invade Khorvaire. They threaten to overrun the continent but an alliance between the Dhakaani and the Orc Druid sects allows for enough time to be bought to seal the portals to Xoriat and trap any other Dealkyr below ground. This only occurred at great cost to Western Khorvaire and the Dhakaani Empire.",
+    "image": "/images/the_dealkyr_war.webp"
+  },
+  {
+    "title": "The First Dragonmarks Develop",
+    "description": "<blockquote>\"In a Strange turn - it seems the first dragonmarks appeared on the halflings of Talenta. After that the elves begin to speak about marks among their population, the mark of shadow presumably. Those who believe in a 13th mark often bring up the vagueness with which Elven scholars describe these marks. While it is somewhat confusing, we have equally confused and vague accounts from Talenta, so maybe there's just something about these first marks that people don't understand.\"</blockquote><center>\"Dragonmarked: The Histories of Marks and the Houses built around them\" by Professor York of Morgrave University</center><p>The first to appear is the <b>Mark of Hospitality</b> found among halflings of the Talenta Plains, followed by the <b>Mark of Shadow</b with the elves of Aerenal. The dragons watch in awe and horror as the Prophecy begins to unfold among the \"lesser\" races.</p><p>Over the next 1,700 years, a total of 12 - or 13, depending on who you ask - unique Dragonmarks would be discovered, and with each one rose a new dynastic <b>Dragonmarked House</b>.",
+    "image": "/images/first_dragonmark.webp"
+  },
+  {
+    "title": "The War of the Mark",
+    "description": "<blockquote>\"The Houses fear what they do not understand, what they cannot control, that is why they set out to kill us.\"</blockquote><center>Georges, Tarkanan Member</center><p>The dragonmarked houses launch the War of the Mark to end the threat of <b>aberrant and mixed marks</b>.</p>",
+    "image": "/images/war_of_the_mark.webp"
+  },
+  {
+    "title": "The Destruction of Sharn",
+    "description": "<blockquote>\"The rock and stone underneath our very feet shook, and buildings around us began to fall. They intended to exact a dreadful price for their death, and they did so.\"</blockquote><center>Account of a soldier from the War of the Mark's End</center><p>The War of the Mark comes to an end when <b>Lord Tarkanan</b> the Lady of the Plague, and his other lieutenants - in a last great act of defiance - cause the <b>destruction</b> of the city of Sharn and the believed <b>extinction</b> of the <b>aberrant mark</b>. The Council of Twelve (The Twelve) is established between the Dragonmarked houses to establish communication between them.",
+    "image": "/images/destruction_of_sharn.webp"
+  },
+  {
+    "title": "The Unification and the Beginning of the Kingdom of Galifer",
+    "description": "<blockquote>\"Finally the Five Nations were united, with governorship of each of the former kingdoms falling to Galifer's children while their father had ultimate control. And thus began the reign of the kingdom of Galifer, which would last just under 900 years.\"</blockquote><center>\"The History of the Peoples of Khorvaire\" by Professor Saan of Morgrave University</center><p><b>Galifar I</b> and his five children - Cyre, Karrn, Thrane, Aundair, and Brey - take control of the Five Nations and establish the <b>Kingdom of Galifar</b>.</p>",
+    "image": "/images/kingdom_of_galifer.webp"
+  },
+  {
+    "title": "The Last War",
+    "description": "<blockquote>\"Succession disputes, while not unheard of in the upper reaches of power, had never extended so far as to effect the king of the kingdom. It was tradition after all, yet it would seem that the governor's of Breland, Thrane, and Karrnath decided to do away with tradition, and did not support the rise of Princess Mishaan of Cyre to the throne. Thus the kingdoms would be thrown into a century long conflict, that would take an untold number of lives.\"</blockquote><center>\"The History of the Peoples of Khorvaire\" by Professor Saan of Morgrave University</center><p><b>King Jarot</b>, the last ruler of Galifar dies. Thalin, Kaius, and Wroann reject the succession of Mishann. Wrogar backs his sister's claim, and the Last War begins. Jarot forced his son, Wrogar of Aundair, to swear to support Mishaan; the rest of them were not there for their father's death, and were not bound by any such oath.</p>",
+    "image": "/images/last_war.webp"
+  },
+  {
+    "title": "House Cannith Creates the Warforged",
+    "description": "<blockquote>\"The advent of the Warforged by House Cannith changed the war almost immedietely, all the nations were soon scrambling for their own unfeeling legions of metal. And of course, House Cannith reaped a large financial benefit from this, their creation forges firing overnight to meet the demand. I do not think they realized the effects that their creations would have after the war, although perhaps they never planned to have the war end at all.\"</blockquote><center>\"Discussion Forum on Warforged at Morgrave University\" quote by Professor Fang of Morgrave University, a Warforged Professor</center><p>House Cannith perfects the modern-era <b>warforged</b>, living constructs designed to fight the Last War.</p>",
+    "image": "/images/cannith_warforged.webp"
+  },
+  {
+    "title": "The Day of Mourning",
+    "description": "<blockquote>\"Then it was gone. I saw it with my own eyes, a wave came rushing over the land, a wall of mist and death that took everything with it. I thought I was dreaming, that it couldn't be real.\"</blockquote><center>Viri Deschamps, Aundairian doctor at the Cyran border, Eyewitness to The Mourning</center><p>Cyre is destroyed and replaced by the <b>Mournland</b>. What caused The Mourning is a mystery, though theories about it abound.</p>",
+    "image": "/images/day_of_mourning.webp"
+  },
+  {
+    "title": "The Treaty of Thronehold",
+    "description": "<blockquote>\"To say the Thronehold Treaty is the greatest achievement of diplomacy is in no way underestimating it. The amount of political wrangling that was required to even get these people in the same room was staggering. If it resulted in anything it would be impressive, that it resulted in the greatest treaty in all of Khorvairian history is nothing short of a miracle.\"</blockquote><center>\"An Account of the Thronehold Treaty\" by Professor Fang of Morgrave University</center><p>Spurred by the events of <b>The Mourning</b>, the nations of Khorvaire gathered together to secure peace. The <b>Treaty of Thronehold</b> officially ends the Last War. The treaty recognizes the nations of Aundair, Breland, Thrane, Karrnath, the Talenta Plains, Zilargo, Q'barra, the Lhazaar Principalities, the Mror Holds, the Eldeen Reaches, Darguun, and Valenar. House Cannith is ordered to destroy all creation forges; the remaining <b>warforged</b> are granted the <b>rights of sentient beings</b>.</p>",
+    "image": "/images/treaty_of_thronehold.webp"
+  },
+  {
+    "title": "Present Day",
+    "description": "<p>Its 998 YK. The nations of Khorvaire rest on a razor's edge, playing a careful balancing act between <b>peace</b> and <b>all-out war</b>, the <b>mystery of the Mournland</b> on every great leader's mind.</p><p>What caused Cyre to fall to the gray mists? And if the great nations once again succumb to war, will they too be consumed like their once-grand capital?</p>",
+    "image": "/images/present_day.webp"
   }
 ]

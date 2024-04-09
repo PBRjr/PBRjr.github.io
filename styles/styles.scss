@@ -108,7 +108,7 @@ section.active h2 {
   height: 400px;
   box-shadow: 5px 5px 10px variables.$shadow-color;
   background-color: #ddd;
-  background-image: url('/images/overview-banner.webp');
+  background-image: url('/images/banner.webp');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -177,6 +177,10 @@ footer {
   text-align: center;
   position: sticky;
   bottom: 0;
+
+  p {
+    padding-top: 0;
+  }
 }
 
 /* 
@@ -221,7 +225,7 @@ Media queries
       
       background-color: variables.$background-medium;
       color: variables.$type-color;
-      box-shadow: 8px 8px 12px variables.$shadow-color;
+      box-shadow: 8px 8px 12px black;
       z-index: 99;
 
       position: absolute;

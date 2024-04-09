@@ -4,6 +4,10 @@ body {
   font-family: "Fauna One", "serif";
 }
 
+p {
+  padding-top: 2rem;
+}
+
 h1, h2, h3, h4, h5, h6, a {
   color: #ffe28a;
   font-family: "Cinzel", "serif";
@@ -23,6 +27,20 @@ header {
   color: #ffe28a;
   padding: 20px;
   box-shadow: 0 3px 8px rgba(29, 29, 29, 0.8431372549);
+}
+
+center {
+  text-align: center;
+  border-top: 2px solid rgb(122, 122, 122);
+  margin-top: 10px;
+  padding-top: 5px;
+}
+
+blockquote {
+  border-left: 8px solid #f55b1d;
+  margin-left: 0;
+  padding: 5px;
+  font-style: italic;
 }
 
 .burger div {
@@ -189,6 +207,11 @@ Timeline
   cursor: pointer;
 }
 
+@media screen and (max-width: 48rem) {
+  .timeline-item img {
+    display: none;
+  }
+}
 /*
 ---
 Global Styles
@@ -281,7 +304,7 @@ section.active h2 {
   height: 400px;
   box-shadow: 5px 5px 10px rgba(29, 29, 29, 0.8431372549);
   background-color: #ddd;
-  background-image: url("/images/overview-banner.webp");
+  background-image: url("/images/banner.webp");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -345,6 +368,9 @@ footer {
   position: sticky;
   bottom: 0;
 }
+footer p {
+  padding-top: 0;
+}
 
 /* 
 --- 
@@ -377,7 +403,7 @@ Media queries
     width: 100%;
     background-color: #383838;
     color: #fcf4d9;
-    box-shadow: 8px 8px 12px rgba(29, 29, 29, 0.8431372549);
+    box-shadow: 8px 8px 12px black;
     z-index: 99;
     position: absolute;
     top: calc(100% + 20px);

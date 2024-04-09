@@ -7,6 +7,10 @@ body {
   font-family: variables.$font-stack-main;
 }
 
+p {
+  padding-top: 2rem;
+}
+
 h1, h2, h3, h4, h5, h6, a {
   color: variables.$type-bold;
   font-family: variables.$font-stack-strong;
@@ -26,6 +30,19 @@ header {
   color: variables.$type-bold;
   padding: 20px;
   box-shadow: 0 3px 8px variables.$shadow-color;
+}
+
+center {
+  text-align: center;
+  border-top: 2px solid rgb(122, 122, 122);
+  margin-top: 10px;
+  padding-top: 5px;
+}
+blockquote {
+  border-left: 8px solid #f55b1d;
+  margin-left: 0;
+  padding: 5px;
+  font-style: italic;
 }
 
 //Burger color
