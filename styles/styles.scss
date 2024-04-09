@@ -193,7 +193,6 @@ Media queries
 @media screen and (max-width: calc(1320rem/16)) {
   .intro-text {
     padding: 0 5%;
-    min-width: 300px;
   }
   // Grid items take up 2 columns
   .grid-item {
@@ -248,7 +247,6 @@ Media queries
   // Overview text takes up more of the screen
   .intro-text {
     padding: 0;
-    min-width: 300px;
   }
 
   // grid items go to 1 column

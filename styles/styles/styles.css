@@ -380,7 +380,6 @@ Media queries
 @media screen and (max-width: 82.5rem) {
   .intro-text {
     padding: 0 5%;
-    min-width: 300px;
   }
   .grid-item {
     flex: 0 0 calc(50% - 20px);
@@ -420,7 +419,6 @@ Media queries
 @media screen and (max-width: 48rem) {
   .intro-text {
     padding: 0;
-    min-width: 300px;
   }
   .grid-item {
     flex: 0 0 100%;
