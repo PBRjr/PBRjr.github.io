@@ -110,7 +110,7 @@ const animateTimelineItems = () => {
       
       if (window.matchMedia("(max-width: 768px)").matches) {
         // Adjusted value for mobile screens
-        if (itemPosition < windowHeight * 0.60) { 
+        if (itemPosition < windowHeight * 0.75) { 
           item.classList.add('show');
         }
       } else {
