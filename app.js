@@ -38,13 +38,25 @@ const showSection = (sectionId) => {
   const selectedSection = document.getElementById(sectionId);
   selectedSection.classList.remove('hidden');
   selectedSection.classList.add('active');
-  navLinks.classList.add('nav-inactive');
-  setTimeout(() => {
-    navLinks.classList.remove('nav-active');
-    navLinks.style.display = 'none';
-  }, 500);
+
+  // Query for screen width then hide nav menu if burger is being used
+  if (window.matchMedia('(max-width: 82.5rem)').matches) {
+    navLinks.classList.add('nav-inactive');
+    setTimeout(() => {
+      navLinks.classList.remove('nav-active');
+      navLinks.style.display = 'none';
+    }, 500);
+  }
 };
 
+// Nav menu event listener for screen width change
+window.addEventListener('resize', () => {
+  if(!window.matchMedia('(max-width: 82.5rem)').matches) {
+    navLinks.classList.remove('nav-inactive');
+    navLinks.classList.add('nav-active');
+    navLinks.style.display = 'flex';
+  }
+});
 
 // Render grid items
 const renderGridItems = (section, data) => {

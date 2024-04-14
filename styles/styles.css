@@ -79,7 +79,8 @@ Heroes, Characters, Places Grids
 .grid-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 5px;
   margin-bottom: 10px;
 }
@@ -158,7 +159,7 @@ Timeline
   position: relative;
   max-width: 100%;
   margin: 0 auto;
-  padding: 40px 0;
+  padding: 40px 10% 0 10%;
   overflow-x: hidden;
 }
 
@@ -219,6 +220,11 @@ Timeline
   cursor: pointer;
 }
 
+@media screen and (max-width: 82.5rem) {
+  .timeline-container {
+    padding: 40px 0;
+  }
+}
 @media screen and (max-width: 48rem) {
   .timeline-item img {
     display: none;
@@ -443,20 +449,24 @@ Media queries
 @keyframes slide-in {
   from {
     transform: translateY(-100%);
-    clip-path: inset(100% 0 0 0);
+    -webkit-clip-path: inset(100% 0 0 0);
+            clip-path: inset(100% 0 0 0);
   }
   to {
     transform: translateY(0);
-    clip-path: inset(0 0 0 0);
+    -webkit-clip-path: inset(0 0 0 0);
+            clip-path: inset(0 0 0 0);
   }
 }
 @keyframes slide-out {
   from {
     transform: translateY(0);
-    clip-path: inset(0 0 0 0);
+    -webkit-clip-path: inset(0 0 0 0);
+            clip-path: inset(0 0 0 0);
   }
   to {
     transform: translateY(-100%);
-    clip-path: inset(100% 0 0 0);
+    -webkit-clip-path: inset(100% 0 0 0);
+            clip-path: inset(100% 0 0 0);
   }
 }/*# sourceMappingURL=styles.css.map */

@@ -9,7 +9,7 @@ Timeline
   position: relative;
   max-width: 100%;
   margin: 0 auto;
-  padding: 40px 0;
+  padding: 40px 10% 0 10%;
   overflow-x: hidden;
 }
 
@@ -70,8 +70,14 @@ Timeline
   cursor: pointer;
 }
 
+@media screen and (max-width: calc(1320rem/16)) {
+  .timeline-container {
+    padding: 40px 0;
+  }
+}
+
 @media screen and (max-width: calc(768rem/16)) {
   .timeline-item img {
-    display: none; 
+    display: none;
   }
 }
