@@ -1,12 +1,22 @@
 // Colors
-$background-soft: #424242;
-$background-hard: #272727;
-$background-medium: #383838;
-$type-color: #fcf4d9;
-$type-bold: #ffe28a;
-$shadow-color: #1d1d1dd7;
+$color-dark-grey: #272727;
+$color-medium-grey: #383838;
+$color-light-grey: #424242;
+$color-orange: #f55b1d;
+$color-creme: #fcf4d9;
+$color-creme-strong: #ffe28a;
+$color-white: #ffffff;
 
 // Fonts
-$font-stack-main: 'Fauna One', 'serif';
-$font-stack-strong: 'Cinzel', 'serif';
+$font-primary: 'Fauna One', serif;
+$font-secondary: 'Cinzel', serif;
 
+// Breakpoints
+$breakpoint-mobile: 768px;
+$breakpoint-tablet: 1024px;
+
+// Z-Index
+$z-index-nav: 1000;
+
+// Shadow
+$box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

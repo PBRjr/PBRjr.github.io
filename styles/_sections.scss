@@ -1,0 +1,191 @@
+@import 'variables';
+
+// General Section Styles
+.section {
+    display: none;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s ease-in-out;
+    position: absolute;
+    top: 80px; // Adjust based on header height
+    left: 0;
+    width: 100%;
+    min-height: calc(100vh - 80px); // Full viewport height minus header
+    padding: 60px 20px;
+    background-color: $color-light-grey;
+    overflow-y: auto;
+
+    &.active {
+        display: block;
+        opacity: 1;
+        transform: translateX(0);
+        position: relative;
+    }
+
+    #lore-container, #places-container {
+      .grid-item {
+        margin-bottom: 20px;
+      }
+    }
+}
+
+/* Grid Container */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Grid Item */
+.grid-item {
+    background-color: $color-medium-grey;
+    border-radius: 8px;
+    box-shadow: $box-shadow;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+
+    &:hover,
+    &:focus {
+        background-color: darken($color-medium-grey, 5%);
+        transform: translateY(-5px);
+    }
+
+    img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin: 0 auto 15px;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+        color: $color-orange;
+        margin-bottom: 10px;
+    }
+
+    /* Remove or comment out <p> styling if it exists */
+    /*
+    p {
+        font-size: 0.9rem;
+        color: lighten($color-creme, 20%);
+    }
+    */
+}
+
+/* CTA Buttons Styles */
+.cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: $color-orange;
+        color: $color-white;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+
+        &:hover,
+        &:focus {
+            background-color: darken($color-orange, 10%);
+            transform: scale(1.05);
+        }
+
+        &:active {
+            background-color: lighten($color-orange, 10%);
+            transform: scale(0.95);
+        }
+    }
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.active {
+    display: block;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: $color-medium-grey;
+    margin: 10% auto; /* 10% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 70%; /* Default width for larger screens */
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    overflow-y: auto; /* Enable vertical scrolling */
+  
+    transition: transform 0.3s ease;
+    transform: translateY(-50px); /* Start slightly above */
+
+    /* Responsive Adjustment for Mobile Devices */
+    @media (max-width: $breakpoint-mobile) {
+        width: 90%;
+    }
+
+    &.active {
+        transform: translateY(0); /* Slide into place */
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        margin: 20px 0;
+        border-radius: 5px;
+    }
+
+    .close-button {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        cursor: pointer;
+
+        &:hover,
+        &:focus {
+            color: $color-orange;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        color: $color-orange;
+    }
+
+    p {
+        line-height: 1.8;
+    }
+}
+
+/* Prevent background from scrolling when modal is open */
+body.modal-open {
+    overflow: hidden;
+}

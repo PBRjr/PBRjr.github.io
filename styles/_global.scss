@@ -1,35 +1,62 @@
-@use 'variables';
+@import 'variables';
 
-// Body, Nav, Type
+// Reset & Global Styles
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  background-color: variables.$background-soft;
-  color: variables.$type-color;
-  font-family: variables.$font-stack-main;
+    background-color: $color-light-grey;
+    color: $color-creme;
+    font-family: $font-primary;
+    line-height: 1.6;
+    overflow-x: hidden; // Prevent horizontal scroll
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-secondary;
+    color: $color-creme;
+    margin-bottom: 1rem;
 }
 
 p {
-  padding-top: 2rem;
-}
-
-h1, h2, h3, h4, h5, h6, a {
-  color: variables.$type-bold;
-  font-family: variables.$font-stack-strong;
+    margin-bottom: 1rem;
+    padding-top: 2rem;
 }
 
 b, strong {
-  color: variables.$type-bold;
-  font-family: variables.$font-stack-main;
+  color: $color-creme-strong;
 }
 
 a {
-  text-decoration: none;
+    color: $color-orange;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: $color-white;
+    }
 }
 
-header {
-  background-color: variables.$background-hard;
-  color: variables.$type-bold;
-  padding: 20px;
-  box-shadow: 0 3px 8px variables.$shadow-color;
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+blockquote {
+  border-left: 8px solid $color-orange;
+  margin-left: 0;
+  padding: 5px;
+  font-style: italic;
 }
 
 center {
@@ -37,16 +64,4 @@ center {
   border-top: 2px solid rgb(122, 122, 122);
   margin-top: 10px;
   padding-top: 5px;
-}
-
-blockquote {
-  border-left: 8px solid #f55b1d;
-  margin-left: 0;
-  padding: 5px;
-  font-style: italic;
-}
-
-//Burger color
-.burger div {
-  background-color: variables.$type-bold;
 }
