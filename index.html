@@ -32,8 +32,20 @@
     <main>
         <!-- Landing Section -->
         <section id="landing" class="section active">
-            <div class="banner">
-                <img src="images/banner.webp" alt="Campaign Banner">
+            <div class="banner-container">
+                <div class="banner-slider">
+                    <!-- Add your banner images here -->
+                    <img src="/images/banner_history.webp" alt="Banner History" class="banner-image">
+                    <img src="/images/banner_adventurers.webp" alt="Banner Adventurers" class="banner-image">
+                    <img src="/images/banner_airship.webp" alt="Banner Airship" class="banner-image">
+                    <img src="/images/banner_landscape.webp" alt="Banner Landscape" class="banner-image">
+                </div>
+                <button class="banner-arrow banner-arrow-left">&lt;</button>
+                <button class="banner-arrow banner-arrow-right">&gt;</button>
+            </div>
+            <div class="magnified-view">
+                <img src="" alt="Magnified Image" class="magnified-image">
+                <button class="close-magnified">&times;</button>
             </div>
             <div class="cta-buttons">
                 <a href="#heroes" class="btn nav-link">Heroes</a>
@@ -46,7 +58,6 @@
 
         <!-- Heroes Section -->
         <section id="heroes" class="section">
-            <h2>Heroes</h2>
             <div class="grid-container" id="heroes-container">
                 <!-- Dynamic Hero Cards will be inserted here -->
             </div>
@@ -54,7 +65,6 @@
 
         <!-- Characters Section -->
         <section id="characters" class="section">
-            <h2>Characters</h2>
             <div class="grid-container" id="characters-container">
                 <!-- Dynamic Character Cards will be inserted here -->
             </div>
@@ -62,7 +72,6 @@
 
         <!-- Places Section -->
         <section id="places" class="section">
-            <h2>Places</h2>
             <div class="grid-container" id="places-container">
                 <!-- Dynamic Place Cards will be inserted here -->
             </div>
@@ -70,7 +79,6 @@
 
         <!-- Headlines Section -->
         <section id="headlines" class="section">
-            <h2>Headlines</h2>
             <div class="grid-container" id="headlines-container">
                 <!-- Dynamic Headline Entries will be inserted here -->
             </div>
@@ -78,7 +86,6 @@
 
         <!-- Lore Section -->
         <section id="lore" class="section">
-            <h2>Lore</h2>
             <div class="timeline-container">
                 <div class="timeline-line"></div>
                 <div class="timeline-items" id="lore-container">

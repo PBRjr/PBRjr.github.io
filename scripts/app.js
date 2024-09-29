@@ -212,3 +212,73 @@ navItems.forEach(item => {
         }
     });
 });
+
+// Banner Slider
+const bannerSlider = document.querySelector('.banner-slider');
+const bannerImages = document.querySelectorAll('.banner-image');
+const leftArrow = document.querySelector('.banner-arrow-left');
+const rightArrow = document.querySelector('.banner-arrow-right');
+
+let currentIndex = 0;
+const totalImages = bannerImages.length;
+
+function updateSlider() {
+    bannerSlider.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
+
+function nextSlide() {
+    currentIndex = (currentIndex + 1) % totalImages;
+    updateSlider();
+}
+
+function prevSlide() {
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+    updateSlider();
+}
+
+// Auto-scroll
+let autoScrollInterval = setInterval(nextSlide, 5000); // Change image every 5 seconds
+
+// Manual navigation
+leftArrow.addEventListener('click', () => {
+    clearInterval(autoScrollInterval);
+    prevSlide();
+    autoScrollInterval = setInterval(nextSlide, 5000);
+});
+
+rightArrow.addEventListener('click', () => {
+    clearInterval(autoScrollInterval);
+    nextSlide();
+    autoScrollInterval = setInterval(nextSlide, 5000);
+});
+
+// Initialize slider
+updateSlider();
+
+// Magnified View
+const magnifiedView = document.querySelector('.magnified-view');
+const magnifiedImage = document.querySelector('.magnified-image');
+const closeMagnified = document.querySelector('.close-magnified');
+
+// Add click event to banner images
+bannerImages.forEach(image => {
+    image.addEventListener('click', () => {
+        magnifiedImage.src = image.src;
+        magnifiedView.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    });
+});
+
+// Close magnified view
+closeMagnified.addEventListener('click', () => {
+    magnifiedView.style.display = 'none';
+    document.body.style.overflow = ''; // Restore scrolling
+});
+
+// Close magnified view when clicking outside the image
+magnifiedView.addEventListener('click', (e) => {
+    if (e.target === magnifiedView) {
+        magnifiedView.style.display = 'none';
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+});

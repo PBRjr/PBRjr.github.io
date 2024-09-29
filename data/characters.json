@@ -8,5 +8,10 @@
     "name": "Oak Dryfire",
     "image": "/images/oak_dryfire.webp",
     "bio": "Nothing excites Oak more than the thought of frolicking in a field with the disembodied head of a great pest trailing shortly behind him."
+  },
+  {
+    "name": "Garhorn",
+    "image": "/images/garhorn.webp",
+    "bio": "Once a proud member of the Boromar Clan and loyal to Castar, Garhorn now drinks his days away in the streets of Sharn. After his encounter with the party, he now splits his time between dodging Boromar Clan agents and nursing hangovers. His dog Blinker remains fiercely loyal, always by his side, watching his back while he sleeps away his intoxication."
   }
 ]
