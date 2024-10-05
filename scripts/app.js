@@ -214,6 +214,7 @@ navItems.forEach(item => {
 });
 
 // Banner Slider
+const bannerContainer = document.querySelector('.banner-container');
 const bannerSlider = document.querySelector('.banner-slider');
 const bannerImages = document.querySelectorAll('.banner-image');
 const leftArrow = document.querySelector('.banner-arrow-left');
@@ -223,7 +224,8 @@ let currentIndex = 0;
 const totalImages = bannerImages.length;
 
 function updateSlider() {
-    bannerSlider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    const slideWidth = bannerContainer.offsetWidth;
+    bannerSlider.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
 }
 
 function nextSlide() {
@@ -254,6 +256,23 @@ rightArrow.addEventListener('click', () => {
 
 // Initialize slider
 updateSlider();
+
+// Recalculate slider on window resize
+window.addEventListener('resize', updateSlider);
+
+// Set initial widths
+function setInitialWidths() {
+    const containerWidth = bannerContainer.offsetWidth;
+    bannerSlider.style.width = `${containerWidth * totalImages}px`;
+    bannerImages.forEach(image => {
+        image.style.width = `${containerWidth}px`;
+    });
+    updateSlider();
+}
+
+// Call setInitialWidths on load and resize
+window.addEventListener('load', setInitialWidths);
+window.addEventListener('resize', setInitialWidths);
 
 // Magnified View
 const magnifiedView = document.querySelector('.magnified-view');
