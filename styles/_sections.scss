@@ -144,6 +144,8 @@
     /* Responsive Adjustment for Mobile Devices */
     @media (max-width: $breakpoint-mobile) {
         width: 90%;
+        margin: 20% auto; /* Increase top margin on mobile */
+        max-height: 80vh; /* Limit height on mobile */
     }
 
     &.active {

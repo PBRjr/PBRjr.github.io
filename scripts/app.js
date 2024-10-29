@@ -122,7 +122,7 @@ function createGridItem(item, type) {
             <h3>${item.title}</h3>
         `;
     } else {
-        div.innerHTML = `
+        div.innerHTML = ` 
             <img src="${item.image}" alt="${item.name}">
             <h3>${item.name}</h3>
         `;
@@ -162,6 +162,7 @@ function addModalListeners(container) {
 // Populate all sections
 populateSection('data/heroes.json', 'heroes-container', 'heroes');
 populateSection('data/characters.json', 'characters-container', 'characters');
+populateSection('data/factions.json', 'factions-container', 'factions');
 populateSection('data/places.json', 'places-container', 'places');
 populateSection('data/headlines.json', 'headlines-container', 'headlines');
 populateSection('data/timeline.json', 'lore-container', 'lore');

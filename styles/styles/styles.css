@@ -224,19 +224,27 @@ nav {
     background-color: #272727;
     flex-direction: column;
     align-items: center;
-    width: 60%;
+    width: 100%;
     transform: translateX(100%);
     transition: transform 0.5s ease-in;
     padding-top: 80px;
+    overflow-x: hidden;
   }
   .nav-links li {
     margin: 20px 0;
+    width: 100%;
+    text-align: center;
   }
   .nav-links.nav-active {
     transform: translateX(0);
   }
   .burger {
     display: block;
+  }
+  body.nav-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
   }
 }
 .section {
@@ -369,6 +377,8 @@ nav {
 @media (max-width: 768px) {
   .modal-content {
     width: 90%;
+    margin: 20% auto; /* Increase top margin on mobile */
+    max-height: 80vh; /* Limit height on mobile */
   }
 }
 .modal-content.active {
