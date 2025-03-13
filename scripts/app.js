@@ -166,6 +166,7 @@ populateSection('data/factions.json', 'factions-container', 'factions');
 populateSection('data/places.json', 'places-container', 'places');
 populateSection('data/headlines.json', 'headlines-container', 'headlines');
 populateSection('data/timeline.json', 'lore-container', 'lore');
+populateSection('data/items.json', 'items-container', 'items');
 
 // Navigation Items
 const navItems = document.querySelectorAll('.nav-link');

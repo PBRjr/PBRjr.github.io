@@ -14,14 +14,15 @@
         <nav>
             <div class="logo">TYFYS Campaign Library</div>
             <ul class="nav-links nav-inactive">
-                <li><a href="#landing" class="nav-link active-link">Home</a></li>
-                <li><a href="#heroes" class="nav-link">Heroes</a></li>
-                <li><a href="#characters" class="nav-link">Characters</a></li>
-                <li><a href="#factions" class="nav-link">Factions</a></li>
-                <li><a href="#places" class="nav-link">Places</a></li>
-                <li><a href="#headlines" class="nav-link">Headlines</a></li>
-                <li><a href="#lore" class="nav-link">Lore</a></li>
-            </ul>
+              <li><a href="#landing" class="nav-link active-link">Home</a></li>
+              <li><a href="#heroes" class="nav-link">Heroes</a></li>
+              <li><a href="#characters" class="nav-link">Characters</a></li>
+              <li><a href="#factions" class="nav-link">Factions</a></li>
+              <li><a href="#places" class="nav-link">Places</a></li>
+              <li><a href="#headlines" class="nav-link">Headlines</a></li>
+              <li><a href="#world-history" class="nav-link">World History</a></li>
+              <li><a href="#items" class="nav-link">Lore, Items, & Artifacts</a></li>
+          </ul>
             <div class="burger" aria-label="Toggle navigation" aria-expanded="false" role="button" tabindex="0">
                 <div class="line1"></div>
                 <div class="line2"></div>
@@ -49,12 +50,13 @@
                 <button class="close-magnified">&times;</button>
             </div>
             <div class="cta-buttons">
-                <a href="#heroes" class="btn nav-link">Heroes</a>
-                <a href="#characters" class="btn nav-link">Characters</a>
-                <a href="#places" class="btn nav-link">Places</a>
-                <a href="#headlines" class="btn nav-link">Headlines</a>
-                <a href="#lore" class="btn nav-link">Lore</a>
-            </div>
+              <a href="#heroes" class="btn nav-link">Heroes</a>
+              <a href="#characters" class="btn nav-link">Characters</a>
+              <a href="#places" class="btn nav-link">Places</a>
+              <a href="#headlines" class="btn nav-link">Headlines</a>
+              <a href="#world-history" class="btn nav-link">World History</a>
+              <a href="#items" class="btn nav-link">Lore, Items, & Artifacts</a>
+          </div>
         </section>
 
         <!-- Heroes Section -->
@@ -92,14 +94,21 @@
             </div>
         </section>
 
-        <!-- Lore Section -->
-        <section id="lore" class="section">
-            <div class="timeline-container">
-                <div class="timeline-line"></div>
-                <div class="timeline-items" id="lore-container">
-                    <!-- Dynamic Timeline Items will be inserted here -->
-                </div>
-            </div>
+                <!-- World History Section (renamed from "lore") -->
+        <section id="world-history" class="section">
+          <div class="timeline-container">
+              <div class="timeline-line"></div>
+              <div class="timeline-items" id="lore-container">
+                  <!-- Dynamic Timeline Items will be inserted here -->
+              </div>
+          </div>
+        </section>
+
+        <!-- Lore, Items, & Artifacts Section (new) -->
+        <section id="items" class="section">
+          <div class="grid-container" id="items-container">
+              <!-- Dynamic Item Cards will be inserted here -->
+          </div>
         </section>
     </main>
 
