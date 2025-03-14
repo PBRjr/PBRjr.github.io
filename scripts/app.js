@@ -303,3 +303,51 @@ magnifiedView.addEventListener('click', (e) => {
         document.body.style.overflow = ''; // Restore scrolling
     }
 });
+
+async function displayRandomFeaturedContent() {
+  // All content sources with their respective properties for display
+  const contentSources = [
+      { path: 'data/heroes.json', nameKey: 'name', descKey: 'bio', type: 'Heroes' },
+      { path: 'data/characters.json', nameKey: 'name', descKey: 'bio', type: 'Characters' },
+      { path: 'data/factions.json', nameKey: 'name', descKey: 'bio', type: 'Factions' },
+      { path: 'data/places.json', nameKey: 'name', descKey: 'bio', type: 'Places' },
+      { path: 'data/headlines.json', nameKey: 'title', descKey: 'description', type: 'Headlines' },
+      { path: 'data/timeline.json', nameKey: 'title', descKey: 'description', type: 'Lore' }
+  ];
+
+  // Randomly select a content source
+  const randomSource = contentSources[Math.floor(Math.random() * contentSources.length)];
+  
+  try {
+      // Fetch data from the random source
+      const data = await fetchData(randomSource.path);
+      
+      if (data && data.length > 0) {
+          // Pick a random entry from the selected source
+          const randomEntry = data[Math.floor(Math.random() * data.length)];
+          
+          // Get DOM elements
+          const featuredName = document.getElementById('featured-name');
+          const featuredSource = document.getElementById('featured-source');
+          const featuredDescription = document.getElementById('featured-description');
+          
+          // Update content
+          featuredName.textContent = randomEntry[randomSource.nameKey];
+          featuredSource.textContent = `From ${randomSource.type}`;
+          featuredDescription.innerHTML = randomEntry[randomSource.descKey];
+      }
+  } catch (error) {
+      console.error('Error loading featured content:', error);
+      document.getElementById('featured-name').textContent = 'Featured Content';
+      document.getElementById('featured-description').textContent = 'Could not load content';
+  }
+}
+
+// Add event listener to the button
+const randomButton = document.getElementById('random-article-button');
+if (randomButton) {
+    randomButton.addEventListener('click', displayRandomFeaturedContent);
+}
+
+// Call the function when the page loads
+window.addEventListener('load', displayRandomFeaturedContent);

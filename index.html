@@ -7,7 +7,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Fauna+One&display=swap" rel="stylesheet">
     <!-- Compiled CSS -->
-    <link rel="stylesheet" href="styles/styles/styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
     <header>
@@ -49,13 +49,17 @@
                 <img src="" alt="Magnified Image" class="magnified-image">
                 <button class="close-magnified">&times;</button>
             </div>
-            <div class="cta-buttons">
-              <a href="#heroes" class="btn nav-link">Heroes</a>
-              <a href="#characters" class="btn nav-link">Characters</a>
-              <a href="#places" class="btn nav-link">Places</a>
-              <a href="#headlines" class="btn nav-link">Headlines</a>
-              <a href="#world-history" class="btn nav-link">World History</a>
-              <a href="#items" class="btn nav-link">Lore, Items, & Artifacts</a>
+
+          <!-- Random Featured Content -->
+          <div class="featured-content">
+            <div class="featured-controls">
+              <button id="random-article-button" class="btn">Show Another Random Article</button>
+            </div>
+              <div class="featured-header">
+                  <h2 id="featured-name">Featured Content</h2>
+                  <span id="featured-source">From Factions</span>
+              </div>
+              <div id="featured-description"></div>
           </div>
         </section>
 
