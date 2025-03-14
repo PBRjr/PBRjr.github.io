@@ -290,6 +290,45 @@ bannerImages.forEach(image => {
     });
 });
 
+// Banner indicators functionality
+const indicatorDots = document.querySelectorAll('.indicator-dot');
+
+// Update active indicator
+function updateIndicators() {
+    indicatorDots.forEach((dot, index) => {
+        if (index === currentIndex) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+}
+
+// Add click events to indicators
+indicatorDots.forEach(dot => {
+    dot.addEventListener('click', () => {
+        const index = parseInt(dot.getAttribute('data-index'));
+        clearInterval(autoScrollInterval);
+        currentIndex = index;
+        updateSlider();
+        updateIndicators();
+        autoScrollInterval = setInterval(nextSlide, 5000);
+    });
+});
+
+// Update indicators when next/prev functions are called
+function nextSlide() {
+    currentIndex = (currentIndex + 1) % totalImages;
+    updateSlider();
+    updateIndicators();
+}
+
+function prevSlide() {
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+    updateSlider();
+    updateIndicators();
+}
+
 // Close magnified view
 closeMagnified.addEventListener('click', () => {
     magnifiedView.style.display = 'none';

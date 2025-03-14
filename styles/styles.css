@@ -75,9 +75,12 @@ center {
   position: relative;
   width: 100%;
   max-width: 800px;
-  height: 300px;
-  margin: 0 auto;
+  height: 400px;
+  margin: 30px auto;
   overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid #555;
 }
 
 .banner-slider {
@@ -98,6 +101,7 @@ center {
      object-position: center;
   flex-shrink: 0;
   cursor: pointer;
+  filter: brightness(0.9);
 }
 
 .banner-arrow {
@@ -107,21 +111,67 @@ center {
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
-  padding: 10px 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   font-size: 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .banner-arrow:hover {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(245, 91, 29, 0.8);
+  transform: translateY(-50%) scale(1.1);
 }
 
 .banner-arrow-left {
-  left: 10px;
+  left: 15px;
 }
 
 .banner-arrow-right {
-  right: 10px;
+  right: 15px;
+}
+
+.banner-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(39, 39, 39, 0.9), transparent);
+  padding: 20px;
+  text-align: center;
+  color: #fcf4d9;
+  font-family: "Cinzel", serif;
+  font-size: 1.5rem;
+  z-index: 5;
+}
+
+.banner-indicators {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.indicator-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator-dot.active {
+  background-color: #f55b1d;
+  transform: scale(1.2);
 }
 
 .magnified-view {
@@ -230,7 +280,6 @@ center {
   border-radius: 5px;
   font-size: 1.2rem;
   text-decoration: none;
-  font-weight: bold;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
@@ -259,7 +308,6 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -273,6 +321,9 @@ nav {
 .nav-links {
   list-style: none;
   display: flex;
+  margin-left: auto;
+  justify-content: flex-end;
+  font-weight: bold;
 }
 .nav-links li {
   margin-left: 20px;
@@ -324,16 +375,22 @@ nav {
     background-color: #272727;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
     transform: translateX(100%);
     transition: transform 0.5s ease-in;
-    padding-top: 80px;
+    padding-top: 0;
     overflow-x: hidden;
   }
   .nav-links li {
     margin: 20px 0;
     width: 100%;
     text-align: center;
+  }
+  .nav-links a {
+    display: block;
+    padding: 15px 0;
+    font-size: 1.2rem;
   }
   .nav-links.nav-active {
     transform: translateX(0);

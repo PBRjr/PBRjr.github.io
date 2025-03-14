@@ -79,9 +79,12 @@ center {
   position: relative;
   width: 100%;
   max-width: 800px; // Adjust this value based on your desired maximum width
-  height: 300px; // Adjust this value as needed
-  margin: 0 auto; // Center the container
+  height: 400px; // Adjust this value as needed
+  margin: 30px auto; // Center the container
   overflow: hidden;
+  border-radius: 12px; // Rounded corners
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); // More pronounced shadow
+  border: 1px solid #555; // Subtle border
 }
 
 .banner-slider {
@@ -100,6 +103,7 @@ center {
   object-position: center;
   flex-shrink: 0; // Prevent images from shrinking
   cursor: pointer;
+  filter: brightness(0.9); // Slightly darken images for text overlay
 }
 
 .banner-arrow {
@@ -109,22 +113,69 @@ center {
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
-  padding: 10px 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   font-size: 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-  }
+.banner-arrow:hover {
+  background-color: rgba(245, 91, 29, 0.8); // Use your orange color with opacity
+  transform: translateY(-50%) scale(1.1);
 }
 
 .banner-arrow-left {
-  left: 10px;
+  left: 15px;
 }
 
 .banner-arrow-right {
-  right: 10px;
+  right: 15px;
+}
+
+// Add a title overlay to the banner
+.banner-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(39, 39, 39, 0.9), transparent);
+  padding: 20px;
+  text-align: center;
+  color: $color-creme;
+  font-family: $font-secondary;
+  font-size: 1.5rem;
+  z-index: 5;
+}
+
+// Add indicator dots
+.banner-indicators {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.indicator-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator-dot.active {
+  background-color: $color-orange;
+  transform: scale(1.2);
 }
 
 .magnified-view {
@@ -232,7 +283,6 @@ center {
   border-radius: 5px;
   font-size: 1.2rem;
   text-decoration: none;
-  font-weight: bold;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
