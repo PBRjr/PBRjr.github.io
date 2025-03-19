@@ -42,10 +42,12 @@ a {
 
 #modal-description {
   font-size: 1.2rem;
+  text-align: justify;
 }
 
 #modal-title {
   font-size: 2rem;
+  text-align: center;
 }
 
 img {
@@ -69,10 +71,20 @@ blockquote {
 }
 
 center {
-  text-align: center;
+  text-align: right;
   border-top: 2px solid rgb(122, 122, 122);
   margin-top: 10px;
   padding-top: 5px;
+  color: $color-white-transparent;
+}
+
+subline {
+  text-align: right;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: $color-white-transparent;
+  display:block;
+  margin: 1rem;
 }
 
 .banner-container {
