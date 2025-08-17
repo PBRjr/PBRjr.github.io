@@ -2,21 +2,21 @@
   {
     "name": "Jonston Marsh",
     "image": "/images/jonston-marsh.png",
-    "bio": "A gruff airship captain with a chiseled exterior, Jonston believes in the people that he serves. He will go to the ends of the world to help those who are close to him."
+    "description": "A gruff airship captain with a chiseled exterior, Jonston believes in the people that he serves. He will go to the ends of the world to help those who are close to him."
   },
   {
     "name": "Oak Dryfire",
     "image": "/images/oak_dryfire.webp",
-    "bio": "Nothing excites Oak more than the thought of frolicking in a field with the disembodied head of a great pest trailing shortly behind him."
+    "description": "Nothing excites Oak more than the thought of frolicking in a field with the disembodied head of a great pest trailing shortly behind him."
   },
   {
     "name": "Garhorn",
     "image": "/images/garhorn.webp",
-    "bio": "Once a proud member of the Boromar Clan and loyal to Castar, Garhorn now drinks his days away in the streets of Sharn. After his encounter with the party, he now splits his time between dodging Boromar Clan agents and nursing hangovers. His dog Blinker remains fiercely loyal, always by his side, watching his back while he sleeps away his intoxication."
+    "description": "Once a proud member of the Boromar Clan and loyal to Castar, Garhorn now drinks his days away in the streets of Sharn. After his encounter with the party, he now splits his time between dodging Boromar Clan agents and nursing hangovers. His dog Blinker remains fiercely loyal, always by his side, watching his back while he sleeps away his intoxication."
   },
   {
     "name": "Aeren d'Cannith",
     "image": "/images/aeren.webp",
-    "bio": "Aeren d'Cannith is widely known as the youngest person ever to achieve the rank of Master Artificer within House Cannith, and remarkably, the only one to do so without possessing the <b>Mark of Making</b>. Born to an elven mother and human father outside the dragonmarked house, Aeren earned his position through sheer brilliance rather than bloodline.<br><br>He rose to prominence at the age of 18 with his invention of the <b>Everbright Lantern</b>, a revolutionary magical light source that's now commonly found throughout Khorvaire. Though adopted into House Cannith only about 20 years ago, his ingenious creations and unorthodox approaches to magical engineering have earned him respect even among the traditionalists of the house.<br><br>While he maintains a workshop in the <b>Everbright district</b> of Middle Menthis in Sharn, Aeren is known to occasionally take on apprentices and collaborate with independent artificers, showing an unusual openness for a member of a dragonmarked house."
+    "description": "Aeren d'Cannith is widely known as the youngest person ever to achieve the rank of Master Artificer within House Cannith, and remarkably, the only one to do so without possessing the **Mark of Making**. Born to an elven mother and human father outside the dragonmarked house, Aeren earned his position through sheer brilliance rather than bloodline.\n\nHe rose to prominence at the age of 18 with his invention of the **Everbright Lantern**, a revolutionary magical light source that's now commonly found throughout Khorvaire. Though adopted into House Cannith only about 20 years ago, his ingenious creations and unorthodox approaches to magical engineering have earned him respect even among the traditionalists of the house.\n\nWhile he maintains a workshop in the **Everbright district** of Middle Menthis in Sharn, Aeren is known to occasionally take on apprentices and collaborate with independent artificers, showing an unusual openness for a member of a dragonmarked house."
   }
 ]

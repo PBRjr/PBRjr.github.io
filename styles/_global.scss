@@ -23,7 +23,6 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
     margin-bottom: 1rem;
-    padding-top: 2rem;
 }
 
 b, strong {
@@ -42,7 +41,7 @@ a {
 
 #modal-description {
   font-size: 1.2rem;
-  text-align: justify;
+  text-align: left;
 }
 
 #modal-title {
@@ -54,7 +53,7 @@ img {
     max-width: 100%;
     height: auto;
     display: block;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(0, 0, 0, 0.2);
+    // Shadow removed from here to prevent unwanted styles on component images
 }
 
 button {
@@ -70,7 +69,11 @@ blockquote {
   font-style: italic;
 }
 
-center {
+blockquote p {
+  margin-bottom: 0;
+}
+
+.text-right-quote {
   text-align: right;
   border-top: 2px solid rgb(122, 122, 122);
   margin-top: 10px;
@@ -78,7 +81,7 @@ center {
   color: $color-white-transparent;
 }
 
-subline {
+.subline {
   text-align: right;
   font-size: 0.9rem;
   font-style: italic;
@@ -87,39 +90,98 @@ subline {
   margin: 1rem;
 }
 
-.banner-container {
+.error-message {
+    color: $color-orange;
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+}
+
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(39, 39, 39, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.loader-container.is-loading {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.loader {
+    border: 8px solid $color-medium-grey;
+    border-top: 8px solid $color-orange;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+// --- NEW CAROUSEL STRUCTURE ---
+
+// The main wrapper that holds the frame and the static controls
+.banner {
   position: relative;
   width: 100%;
-  max-width: 800px; // Adjust this value based on your desired maximum width
-  height: 400px; // Adjust this value as needed
-  margin: 30px auto; // Center the container
-  overflow: hidden;
-  border-radius: 12px; // Rounded corners
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); // More pronounced shadow
-  border: 1px solid #555; // Subtle border
+  max-width: 800px;
+  height: 400px;
+  margin: 30px auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+// The inner container that handles the scrolling of images
+.banner-container {
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  border-radius: 12px; // Clip the images to the rounded corners
+  
+  // Hide the scrollbar
+  &::-webkit-scrollbar { display: none; }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .banner-slider {
-  position: absolute;
-  top: 0;
-  left: 0;
   height: 100%;
   display: flex;
-  transition: transform 0.5s ease;
 }
 
 .banner-image {
-  width: 100%; // Make each image take up the full width of the container
+  width: 100%;
   height: 100%;
+  flex-shrink: 0;
   object-fit: cover;
   object-position: center;
-  flex-shrink: 0; // Prevent images from shrinking
   cursor: pointer;
-  filter: brightness(0.9); // Slightly darken images for text overlay
+  scroll-snap-align: start;
+}
+
+// Controls are positioned relative to the .banner wrapper
+.banner-arrow, .banner-title, .banner-indicators {
+  position: absolute;
+  z-index: 10;
 }
 
 .banner-arrow {
-  position: absolute;
   top: 50%;
   transform: translateY(-50%);
   background-color: rgba(0, 0, 0, 0.5);
@@ -131,28 +193,20 @@ subline {
   font-size: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
-  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &:hover {
+    background-color: rgba(245, 91, 29, 0.8);
+    transform: translateY(-50%) scale(1.1);
+  }
 }
 
-.banner-arrow:hover {
-  background-color: rgba(245, 91, 29, 0.8); // Use your orange color with opacity
-  transform: translateY(-50%) scale(1.1);
-}
+.banner-arrow-left { left: 15px; }
+.banner-arrow-right { right: 15px; }
 
-.banner-arrow-left {
-  left: 15px;
-}
-
-.banner-arrow-right {
-  right: 15px;
-}
-
-// Add a title overlay to the banner
 .banner-title {
-  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -161,19 +215,18 @@ subline {
   text-align: center;
   color: $color-creme;
   font-family: $font-secondary;
-  font-size: 1.5rem;
-  z-index: 5;
+  font-size: 1.8rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  pointer-events: none;
+  border-radius: 0 0 12px 12px;
 }
 
-// Add indicator dots
 .banner-indicators {
-  position: absolute;
   bottom: 15px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   gap: 8px;
-  z-index: 10;
 }
 
 .indicator-dot {
@@ -190,6 +243,7 @@ subline {
   transform: scale(1.2);
 }
 
+// --- LIGHTBOX STYLED MAGNIFIED VIEW ---
 .magnified-view {
   display: none;
   position: fixed;
@@ -201,23 +255,56 @@ subline {
   z-index: 1000;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &.visible { display: flex; }
+  &.active { opacity: 1; }
+}
+
+.magnified-content {
+    background: radial-gradient(circle, lighten($color-medium-grey, 5%), $color-medium-grey);
+    padding: 0; // Remove padding to allow image to be flush
+    border: 2px solid darken($color-orange, 20%);
+    max-width: 900px;
+    width: 90%;
+    max-height: 90vh;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; // Clip the image to the rounded corners
 }
 
 .magnified-image {
-  max-width: 90%;
-  max-height: 90%;
+  width: 100%;
   object-fit: contain;
+}
+
+.magnified-caption {
+    font-size: 1.1rem;
+    color: $color-creme;
+    font-family: $font-primary;
+    text-align: center;
+    padding: 15px 20px; // Add padding back to the caption itself
 }
 
 .close-magnified {
   position: absolute;
   top: 20px;
   right: 20px;
-  font-size: 30px;
+  font-size: 40px;
   color: white;
   background: none;
   border: none;
   cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 1001;
+
+  &:hover {
+      transform: scale(1.2);
+      color: $color-orange;
+  }
 }
 
 // Featured content styles
@@ -229,10 +316,14 @@ subline {
 }
 
 .featured-content {
-  max-width: 800px; // Same max-width as the banner container
+  max-width: 800px;
   width: 100%;
-  margin: 0 auto;
-  margin-top: 20px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: lighten($color-dark-grey, 5%);
+  border-radius: 10px;
+  border: 1px solid $color-medium-grey;
+  box-shadow: $box-shadow;
 }
 
 .featured-header {
@@ -246,7 +337,7 @@ subline {
 #featured-name {
   color: $color-creme;
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   text-align: left;
 }
 
@@ -270,7 +361,7 @@ subline {
   font-style: italic;
 }
 
-.featured-content center {
+.featured-content .text-right-quote {
   text-align: center;
   border-top: 2px solid rgb(122, 122, 122);
   margin-top: 10px;

@@ -8,13 +8,13 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Fauna+One&display=swap" rel="stylesheet">
     <!-- Compiled CSS -->
-    <link rel="stylesheet" href="styles/styles/styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
     <header>
         <nav>
             <div class="logo">TYFYS Campaign Library</div>
-            <ul class="nav-links nav-inactive">
+            <ul class="nav-links">
               <li><a href="#landing" class="nav-link active-link">Home</a></li>
               <li><a href="#heroes" class="nav-link">Heroes</a></li>
               <li><a href="#characters" class="nav-link">Characters</a></li>
@@ -33,29 +33,31 @@
     </header>
 
     <main>
+        <div class="loader-container">
+            <div class="loader"></div>
+        </div>
         <!-- Landing Section -->
-        <section id="landing" class="section active">
-            <div class="banner-container">
-                <div class="banner-slider">
-                    <!-- Add your banner images here -->
-                    <img src="/images/banner_history.webp" alt="Banner History" class="banner-image">
-                    <img src="/images/banner_adventurers.webp" alt="Banner Adventurers" class="banner-image">
-                    <img src="/images/banner_airship.webp" alt="Banner Airship" class="banner-image">
-                    <img src="/images/banner_landscape.webp" alt="Banner Landscape" class="banner-image">
+        <section id="landing" class="section">
+            <div class="banner">
+                <div class="banner-container">
+                    <div class="banner-slider">
+                        <!-- Add your banner images here -->
+                        <img src="/images/banner_history.webp" alt="The history of Eberron, I guess" class="banner-image">
+                        <img src="/images/banner_adventurers.webp" alt="Weary adventurers travel through a stone gate to nowhere while being observed by Wookies" class="banner-image">
+                        <img src="/images/banner_airship.webp" alt="An airship flies over the City of Towers" class="banner-image">
+                        <img src="/images/banner_landscape.webp" alt="The beautiful Aundarian countryside" class="banner-image">
+                        <img src="/images/banner_protest.webp" alt="Mass protests escalate in Wroat over unyielding wartime production regulations" class="banner-image">
+                    </div>
+                    <div class="banner-title">Explore the World of Eberron</div>
+                    <button class="banner-arrow banner-arrow-left">&lt;</button>
+                    <button class="banner-arrow banner-arrow-right">&gt;</button>
+                    <div class="banner-indicators">
+                    <div class="indicator-dot active" data-index="0"></div>
+                    <div class="indicator-dot" data-index="1"></div>
+                    <div class="indicator-dot" data-index="2"></div>
+                    <div class="indicator-dot" data-index="3"></div>
                 </div>
-                <div class="banner-title">Explore the World of Eberron</div>
-                <button class="banner-arrow banner-arrow-left">&lt;</button>
-                <button class="banner-arrow banner-arrow-right">&gt;</button>
-                <div class="banner-indicators">
-                  <div class="indicator-dot active" data-index="0"></div>
-                  <div class="indicator-dot" data-index="1"></div>
-                  <div class="indicator-dot" data-index="2"></div>
-                  <div class="indicator-dot" data-index="3"></div>
-              </div>
-            </div>
-            <div class="magnified-view">
-                <img src="" alt="Magnified Image" class="magnified-image">
-                <button class="close-magnified">&times;</button>
+                </div>
             </div>
 
           <!-- Random Featured Content -->
@@ -110,7 +112,7 @@
         <section id="world-history" class="section">
           <div class="timeline-container">
               <div class="timeline-line"></div>
-              <div class="timeline-items" id="lore-container">
+              <div class="timeline-items grid-container" id="lore-container">
                   <!-- Dynamic Timeline Items will be inserted here -->
               </div>
           </div>
@@ -124,16 +126,27 @@
         </section>
     </main>
 
+    <div class="magnified-view">
+        <div class="magnified-content">
+            <img src="" alt="Magnified Image" class="magnified-image">
+            <div class="magnified-caption"></div>
+        </div>
+        <button class="close-magnified">&times;</button>
+    </div>
+
     <!-- Modal Structure -->
     <div id="modal" class="modal">
         <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2 id="modal-title">Title</h2>
-            <div id="modal-description">Description</div>
+            <button class="close-button" aria-label="Close modal">&times;</button>
+            <div class="modal-body">
+                <h2 id="modal-title">Title</h2>
+                <div id="modal-description">Description</div>
+            </div>
         </div>
     </div>
 
     <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="scripts/app.js"></script>
 </body>
 </html>

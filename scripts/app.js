@@ -1,392 +1,305 @@
-// Hamburger Menu Toggle
+// --- DOM Elements ---
 const burger = document.querySelector('.burger');
 const navLinks = document.querySelector('.nav-links');
+const modal = document.getElementById('modal');
+const modalTitle = document.getElementById('modal-title');
+const modalDescription = document.getElementById('modal-description');
+const closeButton = document.querySelector('.close-button');
+const modalContent = document.querySelector('.modal-content');
+const loader = document.querySelector('.loader-container');
+const navItems = document.querySelectorAll('.nav-link');
 
-burger.addEventListener('click', () => {
+// --- State ---
+let previousActiveElement;
+
+// --- Config ---
+const contentSources = [
+    { id: 'landing', path: null, container: 'landing', type: 'static' },
+    { id: 'heroes', path: 'data/heroes.json', container: 'heroes-container', type: 'heroes' },
+    { id: 'characters', path: 'data/characters.json', container: 'characters-container', type: 'characters' },
+    { id: 'factions', path: 'data/factions.json', container: 'factions-container', type: 'factions' },
+    { id: 'places', path: 'data/places.json', container: 'places-container', type: 'places' },
+    { id: 'headlines', path: 'data/headlines.json', container: 'headlines-container', type: 'headlines' },
+    { id: 'world-history', path: 'data/timeline.json', container: 'lore-container', type: 'lore' },
+    { id: 'items', path: 'data/items.json', container: 'items-container', type: 'items' },
+];
+
+// --- Loader ---
+const showLoader = () => loader.classList.add('is-loading');
+const hideLoader = () => loader.classList.remove('is-loading');
+
+// --- Hamburger Menu ---
+function toggleNav() {
     const isActive = navLinks.classList.toggle('nav-active');
     burger.classList.toggle('toggle');
     burger.setAttribute('aria-expanded', isActive);
-});
+    document.body.classList.toggle('nav-open');
+}
 
-// Allow toggling menu with Enter key
-burger.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        burger.click();
-    }
-});
+burger.addEventListener('click', toggleNav);
+burger.addEventListener('keypress', (e) => e.key === 'Enter' && burger.click());
 
-// Modal Elements
-const modal = document.getElementById('modal');
-const modalTitle = document.getElementById('modal-title');
-const modalImage = document.getElementById('modal-image');
-const modalDescription = document.getElementById('modal-description');
-const closeButton = document.querySelector('.close-button');
-const modalContent = document.querySelector('.modal-content'); // Reference to .modal-content
-
-// Variable to store the previously focused element
-let previousActiveElement;
-
-// Function to open modal with specific content and manage focus
-function openModal(title, imageSrc, description) {
-    modalTitle.innerHTML = title;
-    modalDescription.innerHTML = description;
-
-    // Reset scroll position to top
-    modalContent.scrollTop = 0;
-
-    modal.style.display = 'block';
-    modal.classList.add('active'); // For transitions
-    document.body.classList.add('modal-open'); // Disable background scroll
-
-    // Save the currently focused element to restore focus later
+// --- Modal ---
+function openModal(title, description) {
     previousActiveElement = document.activeElement;
-
-    // Set focus to the modal (close button)
+    modalTitle.innerHTML = title;
+    modalDescription.innerHTML = marked.parse(description);
+    modalContent.scrollTop = 0;
+    modal.classList.add('visible');
+    setTimeout(() => {
+        modal.classList.add('active');
+        modalContent.classList.add('active');
+    }, 10);
+    document.body.classList.add('modal-open');
     closeButton.focus();
+    trapFocus(modal);
 }
 
-// Function to close modal and restore focus
 function closeModal() {
-    modal.style.display = 'none';
-    modal.classList.remove('active'); // For transitions
-    document.body.classList.remove('modal-open'); // Enable background scroll
-
-    // Restore focus to the previously focused element
-    if (previousActiveElement) {
-        previousActiveElement.focus();
-    }
+    modal.classList.remove('active');
+    modalContent.classList.remove('active');
+    document.body.classList.remove('modal-open');
+    modal.addEventListener('transitionend', () => {
+        if (!modal.classList.contains('active')) {
+            modal.classList.remove('visible');
+        }
+    }, { once: true });
+    previousActiveElement?.focus();
 }
 
-// Event listener for close button
+const magnifiedView = document.querySelector('.magnified-view');
+
 closeButton.addEventListener('click', closeModal);
-
-// Allow closing modal with Enter key on close button
-closeButton.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        closeModal();
+window.addEventListener('click', (e) => e.target === modal && closeModal());
+window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        if (modal.classList.contains('active')) closeModal();
+        if (magnifiedView.classList.contains('active')) closeMagnifiedView();
     }
 });
 
-// Event listener for clicks outside the modal content to close the modal
-window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        closeModal();
-    }
-});
+function trapFocus(element) {
+    const focusableEls = element.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    const firstFocusableEl = focusableEls[0];
+    const lastFocusableEl = focusableEls[focusableEls.length - 1];
+    
+    element.addEventListener('keydown', function(e) {
+        if (e.key !== 'Tab') return;
+        if (e.shiftKey) {
+            if (document.activeElement === firstFocusableEl) {
+                lastFocusableEl.focus();
+                e.preventDefault();
+            }
+        } else {
+            if (document.activeElement === lastFocusableEl) {
+                firstFocusableEl.focus();
+                e.preventDefault();
+            }
+        }
+    });
+}
 
-// Function to fetch JSON data
+// --- Data Fetching & Content Creation ---
 async function fetchData(url) {
     try {
         const response = await fetch(url);
-        if (!response.ok) throw new Error(`Failed to fetch ${url}`);
-        const data = await response.json();
-        return data;
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        return await response.json();
     } catch (error) {
-        console.error(error);
-        return [];
+        console.error(`Failed to fetch ${url}:`, error);
+        return null;
     }
 }
 
-// Function to create grid items
-function createGridItem(item, type) {
-    const div = document.createElement('div');
-    div.classList.add('grid-item');
+function createGridItem(item) {
+    const button = document.createElement('button');
+    button.classList.add('grid-item');
+    
+    button.dataset.title = item.name;
+    button.dataset.description = item.description || '';
 
-    // Assign data-title based on type
-    if (type === 'headlines' || type === 'lore') {
-        div.setAttribute('data-title', item.title);
+    button.innerHTML = item.image 
+        ? `<img src="${item.image}" alt="" class="grid-item__image" loading="lazy"><h3 class="grid-item__title">${item.name}</h3>`
+        : `<h3 class="grid-item__title">${item.name}</h3>`;
+        
+    return button;
+}
+
+async function populateSection(sectionConfig) {
+    if (!sectionConfig?.path) return;
+    const container = document.getElementById(sectionConfig.container);
+    if (!container || container.dataset.loaded === 'true') return;
+
+    const data = await fetchData(sectionConfig.path);
+    if (data) {
+        container.innerHTML = '';
+        data.forEach(item => container.appendChild(createGridItem(item)));
+        container.addEventListener('click', (e) => {
+            const gridItem = e.target.closest('.grid-item');
+            if (gridItem) openModal(gridItem.dataset.title, gridItem.dataset.description);
+        });
     } else {
-        div.setAttribute('data-title', item.name);
+        container.innerHTML = `<p class="error-message">Could not load content.</p>`;
+    }
+    container.dataset.loaded = 'true';
+}
+
+// --- Navigation & Routing (Hash-based) ---
+function updateActiveLink(targetId) {
+    navItems.forEach(link => {
+        link.classList.toggle('active-link', link.getAttribute('href') === `#${targetId}`);
+    });
+}
+
+async function handleNavigation() {
+    const sectionId = window.location.hash.substring(1) || 'landing';
+    const currentSection = document.querySelector('.section.is-active');
+    const targetSection = document.getElementById(sectionId);
+
+    if (!targetSection || currentSection?.id === sectionId) return;
+
+    if (currentSection) {
+        currentSection.classList.add('is-exiting');
+        currentSection.addEventListener('transitionend', () => {
+            currentSection.classList.remove('is-active', 'is-exiting');
+        }, { once: true });
+    }
+    
+    const sectionConfig = contentSources.find(s => s.id === sectionId);
+    if (sectionConfig?.path) {
+        showLoader();
+        await populateSection(sectionConfig);
+        hideLoader();
     }
 
-    // Assign data-image
-    div.setAttribute('data-image', item.image);
+    targetSection.classList.add('is-active');
+    updateActiveLink(sectionId);
+    window.scrollTo(0, 0);
 
-    // Assign data-description based on type
-    if (type === 'headlines') {
-        div.setAttribute('data-description', item.description || '');
-    } else if (type === 'lore') {
-        div.setAttribute('data-description', item.description || '');
-    } else {
-        div.setAttribute('data-description', item.bio || item.article || '');
+    if (navLinks.classList.contains('nav-active')) {
+        toggleNav();
     }
-
-    // Populate based on type
-    if (type === 'headlines') {
-        div.innerHTML = `
-            <h3>${item.title}</h3>
-        `;
-    } else if (type === 'lore') {
-        div.innerHTML = `
-            <img src="${item.image}" alt="${item.title}">
-            <h3>${item.title}</h3>
-        `;
-    } else {
-        div.innerHTML = ` 
-            <img src="${item.image}" alt="${item.name}">
-            <h3>${item.name}</h3>
-        `;
-    }
-
-    return div;
 }
 
-// Function to populate section
-async function populateSection(jsonPath, containerId, type) {
-    const data = await fetchData(jsonPath);
-    const container = document.getElementById(containerId);
+// --- Banner Slider & Magnified View ---
+const banner = document.querySelector('.banner');
 
-    data.forEach(item => {
-        const gridItem = createGridItem(item, type);
-        container.appendChild(gridItem);
-    });
+if (banner) {
+    const bannerContainer = banner.querySelector('.banner-container');
+    const bannerImages = banner.querySelectorAll('.banner-image');
+    const leftArrow = banner.querySelector('.banner-arrow-left');
+    const rightArrow = banner.querySelector('.banner-arrow-right');
+    const indicatorDots = banner.querySelectorAll('.indicator-dot');
+    
+    const magnifiedImage = magnifiedView.querySelector('.magnified-image');
+    const magnifiedCaption = magnifiedView.querySelector('.magnified-caption');
+    const closeMagnified = magnifiedView.querySelector('.close-magnified');
 
-    // Add event listeners for modals using event delegation
-    addModalListeners(container);
-}
+    let currentIndex = 0;
+    const totalImages = bannerImages.length;
+    let autoScrollInterval;
 
-// Function to add modal listeners using event delegation
-function addModalListeners(container) {
-    container.addEventListener('click', (e) => {
-        const gridItem = e.target.closest('.grid-item');
-        if (!gridItem) return;
-
-        const title = gridItem.getAttribute('data-title');
-        const imageSrc = gridItem.getAttribute('data-image');
-        const description = gridItem.getAttribute('data-description');
-
-        openModal(title, imageSrc, description);
-    });
-}
-
-// Populate all sections
-populateSection('data/heroes.json', 'heroes-container', 'heroes');
-populateSection('data/characters.json', 'characters-container', 'characters');
-populateSection('data/factions.json', 'factions-container', 'factions');
-populateSection('data/places.json', 'places-container', 'places');
-populateSection('data/headlines.json', 'headlines-container', 'headlines');
-populateSection('data/timeline.json', 'lore-container', 'lore');
-populateSection('data/items.json', 'items-container', 'items');
-
-// Navigation Items
-const navItems = document.querySelectorAll('.nav-link');
-
-navItems.forEach(item => {
-    item.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        const targetId = item.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
-        const currentSection = document.querySelector('.section.active');
-
-        if (currentSection === targetSection) return;
-
-        // Remove active link from all nav links
-        navItems.forEach(link => link.classList.remove('active-link'));
-        // Add active link to the clicked link
-        item.classList.add('active-link');
-
-        // Slide-out current section
-        currentSection.classList.remove('active');
-        currentSection.style.transform = 'translateX(-100%)';
-        currentSection.style.opacity = '0';
-
-        // Hide current section after transition
-        setTimeout(() => {
-            currentSection.style.display = 'none';
-            // Reset scroll to top
-            window.scrollTo(0, 0);
-        }, 500); // Match with CSS transition duration
-
-        // Show target section with slide-in animation
-        targetSection.style.display = 'block';
-        setTimeout(() => {
-            targetSection.classList.add('active');
-            targetSection.style.transform = 'translateX(0)';
-            targetSection.style.opacity = '1';
-        }, 20); // Slight delay to trigger transition
-
-        // Close the hamburger menu if it's open
-        if (navLinks.classList.contains('nav-active')) {
-            navLinks.classList.remove('nav-active');
-            burger.classList.remove('toggle');
-            burger.setAttribute('aria-expanded', false);
-        }
-    });
-});
-
-// Banner Slider
-const bannerContainer = document.querySelector('.banner-container');
-const bannerSlider = document.querySelector('.banner-slider');
-const bannerImages = document.querySelectorAll('.banner-image');
-const leftArrow = document.querySelector('.banner-arrow-left');
-const rightArrow = document.querySelector('.banner-arrow-right');
-
-let currentIndex = 0;
-const totalImages = bannerImages.length;
-
-function updateSlider() {
-    const slideWidth = bannerContainer.offsetWidth;
-    bannerSlider.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-}
-
-function nextSlide() {
-    currentIndex = (currentIndex + 1) % totalImages;
-    updateSlider();
-}
-
-function prevSlide() {
-    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-    updateSlider();
-}
-
-// Auto-scroll
-let autoScrollInterval = setInterval(nextSlide, 5000); // Change image every 5 seconds
-
-// Manual navigation
-leftArrow.addEventListener('click', () => {
-    clearInterval(autoScrollInterval);
-    prevSlide();
-    autoScrollInterval = setInterval(nextSlide, 5000);
-});
-
-rightArrow.addEventListener('click', () => {
-    clearInterval(autoScrollInterval);
-    nextSlide();
-    autoScrollInterval = setInterval(nextSlide, 5000);
-});
-
-// Initialize slider
-updateSlider();
-
-// Recalculate slider on window resize
-window.addEventListener('resize', updateSlider);
-
-// Set initial widths
-function setInitialWidths() {
-    const containerWidth = bannerContainer.offsetWidth;
-    bannerSlider.style.width = `${containerWidth * totalImages}px`;
-    bannerImages.forEach(image => {
-        image.style.width = `${containerWidth}px`;
-    });
-    updateSlider();
-}
-
-// Call setInitialWidths on load and resize
-window.addEventListener('load', setInitialWidths);
-window.addEventListener('resize', setInitialWidths);
-
-// Magnified View
-const magnifiedView = document.querySelector('.magnified-view');
-const magnifiedImage = document.querySelector('.magnified-image');
-const closeMagnified = document.querySelector('.close-magnified');
-
-// Add click event to banner images
-bannerImages.forEach(image => {
-    image.addEventListener('click', () => {
-        magnifiedImage.src = image.src;
-        magnifiedView.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
-    });
-});
-
-// Banner indicators functionality
-const indicatorDots = document.querySelectorAll('.indicator-dot');
-
-// Update active indicator
-function updateIndicators() {
-    indicatorDots.forEach((dot, index) => {
-        if (index === currentIndex) {
-            dot.classList.add('active');
-        } else {
-            dot.classList.remove('active');
-        }
-    });
-}
-
-// Add click events to indicators
-indicatorDots.forEach(dot => {
-    dot.addEventListener('click', () => {
-        const index = parseInt(dot.getAttribute('data-index'));
-        clearInterval(autoScrollInterval);
+    // --- Carousel Logic ---
+    const updateIndicators = (index) => {
         currentIndex = index;
-        updateSlider();
-        updateIndicators();
-        autoScrollInterval = setInterval(nextSlide, 5000);
+        indicatorDots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const index = Array.from(bannerImages).indexOf(entry.target);
+                updateIndicators(index);
+            }
+        });
+    }, { root: bannerContainer, threshold: 0.5 });
+
+    bannerImages.forEach(image => observer.observe(image));
+
+    const scrollToImage = (index) => {
+        bannerImages[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        resetAutoScroll();
+    };
+
+    leftArrow.addEventListener('click', () => {
+        const newIndex = (currentIndex - 1 + totalImages) % totalImages;
+        scrollToImage(newIndex);
     });
-});
 
-// Update indicators when next/prev functions are called
-function nextSlide() {
-    currentIndex = (currentIndex + 1) % totalImages;
-    updateSlider();
-    updateIndicators();
-}
+    rightArrow.addEventListener('click', () => {
+        const newIndex = (currentIndex + 1) % totalImages;
+        scrollToImage(newIndex);
+    });
 
-function prevSlide() {
-    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-    updateSlider();
-    updateIndicators();
-}
+    indicatorDots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            scrollToImage(parseInt(dot.dataset.index));
+        });
+    });
 
-// Close magnified view
-closeMagnified.addEventListener('click', () => {
-    magnifiedView.style.display = 'none';
-    document.body.style.overflow = ''; // Restore scrolling
-});
-
-// Close magnified view when clicking outside the image
-magnifiedView.addEventListener('click', (e) => {
-    if (e.target === magnifiedView) {
-        magnifiedView.style.display = 'none';
-        document.body.style.overflow = ''; // Restore scrolling
+    function resetAutoScroll() {
+        clearInterval(autoScrollInterval);
+        autoScrollInterval = setInterval(() => {
+            const newIndex = (currentIndex + 1) % totalImages;
+            scrollToImage(newIndex);
+        }, 5000);
     }
-});
+    
+    resetAutoScroll();
+    
+    // --- Magnified View Logic ---
+    bannerImages.forEach(image => {
+        image.addEventListener('click', () => {
+            magnifiedImage.src = image.src;
+            magnifiedCaption.textContent = image.alt;
+            magnifiedView.classList.add('visible');
+            setTimeout(() => magnifiedView.classList.add('active'), 10);
+            document.body.style.overflow = 'hidden';
+        });
+    });
 
+    const closeMagnifiedView = () => {
+        magnifiedView.classList.remove('active');
+        magnifiedView.addEventListener('transitionend', () => {
+            if (!magnifiedView.classList.contains('active')) {
+                magnifiedView.classList.remove('visible');
+            }
+        }, { once: true });
+        document.body.style.overflow = '';
+    };
+
+    closeMagnified.addEventListener('click', closeMagnifiedView);
+    magnifiedView.addEventListener('click', (e) => e.target === magnifiedView && closeMagnifiedView());
+}
+
+
+// --- Featured Content ---
 async function displayRandomFeaturedContent() {
-  // All content sources with their respective properties for display
-  const contentSources = [
-      { path: 'data/heroes.json', nameKey: 'name', descKey: 'bio', type: 'Heroes' },
-      { path: 'data/characters.json', nameKey: 'name', descKey: 'bio', type: 'Characters' },
-      { path: 'data/factions.json', nameKey: 'name', descKey: 'bio', type: 'Factions' },
-      { path: 'data/places.json', nameKey: 'name', descKey: 'bio', type: 'Places' },
-      { path: 'data/headlines.json', nameKey: 'title', descKey: 'description', type: 'Headlines' },
-      { path: 'data/timeline.json', nameKey: 'title', descKey: 'description', type: 'Lore' }
-  ];
-
-  // Randomly select a content source
-  const randomSource = contentSources[Math.floor(Math.random() * contentSources.length)];
-  
-  try {
-      // Fetch data from the random source
-      const data = await fetchData(randomSource.path);
-      
-      if (data && data.length > 0) {
-          // Pick a random entry from the selected source
-          const randomEntry = data[Math.floor(Math.random() * data.length)];
-          
-          // Get DOM elements
-          const featuredName = document.getElementById('featured-name');
-          const featuredSource = document.getElementById('featured-source');
-          const featuredDescription = document.getElementById('featured-description');
-          
-          // Update content
-          featuredName.textContent = randomEntry[randomSource.nameKey];
-          featuredSource.textContent = `From ${randomSource.type}`;
-          featuredDescription.innerHTML = randomEntry[randomSource.descKey];
-      }
-  } catch (error) {
-      console.error('Error loading featured content:', error);
-      document.getElementById('featured-name').textContent = 'Featured Content';
-      document.getElementById('featured-description').textContent = 'Could not load content';
-  }
+    const featuredSources = contentSources.filter(s => s.path);
+    if (featuredSources.length === 0) return;
+    const randomSource = featuredSources[Math.floor(Math.random() * featuredSources.length)];
+    const data = await fetchData(randomSource.path);
+    if (data?.length) {
+        const randomEntry = data[Math.floor(Math.random() * data.length)];
+        
+        document.getElementById('featured-name').textContent = randomEntry.name;
+        document.getElementById('featured-source').textContent = `From ${randomSource.type.charAt(0).toUpperCase() + randomSource.type.slice(1)}`;
+        document.getElementById('featured-description').innerHTML = marked.parse(randomEntry.description || ''); // Use marked
+    }
 }
 
-// Add event listener to the button
-const randomButton = document.getElementById('random-article-button');
-if (randomButton) {
-    randomButton.addEventListener('click', displayRandomFeaturedContent);
+// --- App Initialization ---
+function init() {
+    window.addEventListener('hashchange', handleNavigation);
+
+    if (window.location.hash === '') {
+        window.location.hash = 'landing';
+    } else {
+        handleNavigation();
+    }
+    
+    displayRandomFeaturedContent();
+    document.getElementById('random-article-button').addEventListener('click', displayRandomFeaturedContent);
 }
 
-// Call the function when the page loads
-window.addEventListener('load', displayRandomFeaturedContent);
+document.addEventListener('DOMContentLoaded', init);

@@ -2,6 +2,11 @@
   {
     "name": "The Boromar Clan",
     "image": "/images/boromar_thumbnail.webp",
-    "bio": "<blockquote>\"The Boromars? They're untouchable. Even the Sharn Watch turns a blind eye to their operations.\"</blockquote><center></center><p>Originally a family of immigrants from the Talenta Plains, the Boromar Clan has built up a network of extortion, blackmail, corruption, smuggling, and gambling halls that run from Lower Dura to the Skyway. The current Boromar patriarch is Saidan Boromar, a member of the Gold Concord of the Aurum. Though recent rumbilings from the underground suggest the Boromar patriarch hasn't been seen in Sharn for some time.</p>"
+    "description": "> \"The Boromars? They're untouchable. Even the Sharn Watch turns a blind eye to their operations.\"\n\n<p class=\"text-right-quote\"></p>\n\nOriginally a family of immigrants from the Talenta Plains, the Boromar Clan has built up a network of extortion, blackmail, corruption, smuggling, and gambling halls that run from Lower Dura to the Skyway. The current Boromar patriarch is Saidan Boromar, a member of the Gold Concord of the Aurum. Though recent rumbilings from the underground suggest the Boromar patriarch hasn't been seen in Sharn for some time."
+  },
+  {
+    "name": "Church of the Silver Flame",
+    "image": "/images/cotsf_thumbnail.webp",
+    "description": "> \"There are many guards who might bend the law for the right price, but the Church of the Silver Flame believes they are the law. You can't bribe a holy fire.\"\n\n<p class=\"text-right-quote\"></p>\n\nA powerful and widespread faith, the Church of the Silver Flame presents itself as a bastion against the supernatural evils of the world. Its templars march under a banner of righteousness, dedicated to protecting the innocent and hunting down monstrous threats. Yet, whispers suggest a more militant side to their faith, one that operates with zealous conviction. The Church has shown an intense and uncompromising interest in certain ancient artifacts, believing only they possess the strength to contain powers too dangerous for the world, and they have proven willing to go to extreme lengths to secure them."
   }
 ]
