@@ -4,6 +4,7 @@ const navLinks = document.querySelector('.nav-links');
 const modal = document.getElementById('modal');
 const modalTitle = document.getElementById('modal-title');
 const modalDescription = document.getElementById('modal-description');
+const modalBody = document.querySelector('.modal-body');
 const closeButton = document.querySelector('.close-button');
 const modalContent = document.querySelector('.modal-content');
 const loader = document.querySelector('.loader-container');
@@ -44,9 +45,9 @@ function openModal(title, description) {
     previousActiveElement = document.activeElement;
     modalTitle.innerHTML = title;
     modalDescription.innerHTML = marked.parse(description);
-    modalContent.scrollTop = 0;
     modal.classList.add('visible');
     setTimeout(() => {
+        modalBody.scrollTop = 0;
         modal.classList.add('active');
         modalContent.classList.add('active');
     }, 10);
@@ -217,7 +218,7 @@ if (banner) {
     bannerImages.forEach(image => observer.observe(image));
 
     const scrollToImage = (index) => {
-        bannerImages[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        bannerContainer.scrollTo({ left: bannerContainer.clientWidth * index, behavior: 'smooth' });
         resetAutoScroll();
     };
 

@@ -278,7 +278,9 @@ blockquote p {
 
 .magnified-image {
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  flex: 1;
+  min-height: 0;
 }
 
 .magnified-caption {
